@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Health_Score_Pre_Close__c</fullName>
+    <description>Pipeline Health: Health Score Pre-Close. Closed deal analysis field used for win and loss reporting.</description>
+    <formula>CASE(
+    Last_Stage_Pre_Close__c,
+
+    &quot;Stage 1&quot;,
+    S1_Milestone_Score__c,
+
+    &quot;Stage 2&quot;,
+    (
+        S1_Milestone_Completion__c +
+        S2_Milestone_Completion__c
+    ) / 22,
+
+    &quot;Stage 3&quot;,
+    (
+        S1_Milestone_Completion__c +
+        S2_Milestone_Completion__c +
+        S3_Milestone_Completion__c
+    ) / 42,
+
+    &quot;Stage 4&quot;,
+    (
+        S1_Milestone_Completion__c +
+        S2_Milestone_Completion__c +
+        S3_Milestone_Completion__c +
+        S4_Milestone_Completion__c
+    ) / 51,
+
+    &quot;Stage 5&quot;,
+    (
+        S1_Milestone_Completion__c +
+        S2_Milestone_Completion__c +
+        S3_Milestone_Completion__c +
+        S4_Milestone_Completion__c +
+        S5_Milestone_Completion__c
+    ) / 57,
+
+    NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Closed deal analysis used in win and loss reporting.</inlineHelpText>
+    <label>Health Score Pre-Close</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

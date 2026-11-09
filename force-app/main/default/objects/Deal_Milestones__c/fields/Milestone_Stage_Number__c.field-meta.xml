@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Stage_Number__c</fullName>
+    <description>Pipeline Health: opportunity stage as a number for milestone math. New Business runs 0 to 6 (stage 6 and Closed Won count as 6). Every other record type, and Closed Lost, caps at 5. Helper for Key Milestone Completion. Original formula capped everything at 5.</description>
+    <externalId>false</externalId>
+    <formula>IF(LEN(TEXT(Opportunity__r.StageName))=0, 0, IF(AND(LEFT(RecordTypeId,15)=&quot;012PU000009t3Pt&quot;, OR(LEFT(TEXT(Opportunity__r.StageName),1)=&quot;6&quot;, TEXT(Opportunity__r.StageName)=&quot;Closed Won&quot;)), 6, IF(ISNUMBER(LEFT(TEXT(Opportunity__r.StageName),1)), MIN(VALUE(LEFT(TEXT(Opportunity__r.StageName),1)),5), 5)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Stage number used by the milestone score. Calculated automatically.</inlineHelpText>
+    <label>Milestone Stage Number</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

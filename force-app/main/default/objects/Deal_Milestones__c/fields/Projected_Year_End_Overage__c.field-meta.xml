@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Projected_Year_End_Overage__c</fullName>
+    <description>Usage data for post-sales Deal Health, written by Zapier. Same value on every open post-sales record for the account.</description>
+    <label>Usage Projected Year-End Overage</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

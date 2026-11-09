@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stakeholders_Confirmed_Score__c</fullName>
+    <description>Pipeline Health: Score for the &quot;Stakeholders Confirmed&quot; milestone on the Deal Milestone record. Written by Momentum from call content or entered by the milestone owner. Counts toward stage completion and Close Confidence. Scale matches the existing milestone score fields (Number 1,0). Blank means not yet assessed.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Score for the Stakeholders Confirmed milestone. Written by Momentum from calls; correct it if it is wrong. Blank means not yet assessed.</inlineHelpText>
+    <label>Stakeholders Confirmed Score</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

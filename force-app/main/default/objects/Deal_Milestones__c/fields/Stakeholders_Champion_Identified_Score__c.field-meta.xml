@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stakeholders_Champion_Identified_Score__c</fullName>
+    <description>AI score (0-3) for the Stakeholders &amp; Champion Identified milestone, stage S2. Used by: Midterm - New Product, Midterm - Other.</description>
+    <externalId>false</externalId>
+    <label>Stakeholders Champion Score</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

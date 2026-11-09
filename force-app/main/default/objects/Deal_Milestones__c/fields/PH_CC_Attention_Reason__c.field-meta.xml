@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Attention_Reason__c</fullName>
+    <description>Command Center logic, the why text on Coaching list rows: Dropped N pts, Commit not backed, Off track or Needs attention.</description>
+    <externalId>false</externalId>
+    <formula>TRIM(IF(PH_CC_Dropped__c, &quot;Dropped &quot; &amp; TEXT(ROUND(ABS(Close_Likelihood_Score__c - Prior_Health_Score__c) * 100, 0)) &amp; &quot; pts. &quot;, &quot;&quot;) &amp; IF(PH_CC_Commit_Backing__c = &quot;Not backed (under 70%)&quot;, &quot;Commit not backed. &quot;, &quot;&quot;) &amp; IF(CONTAINS(Health_Category__c, &quot;Off Track&quot;), &quot;Off track.&quot;, IF(CONTAINS(Health_Category__c, &quot;Needs Attention&quot;), &quot;Needs attention.&quot;, &quot;&quot;)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Command Center: why this deal is on the Coaching list.</inlineHelpText>
+    <label>CC: Attention reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Set__c</fullName>
+    <description>Which Pipeline Health milestone set applies to this record type: NB, OG (Midterm Organic Growth), NP (Midterm New Product and Other), RN (Renewal).</description>
+    <externalId>false</externalId>
+    <formula>CASE(RecordType.DeveloperName, &quot;New_Business&quot;, &quot;NB&quot;, &quot;Renewal&quot;, &quot;RN&quot;, &quot;Midterm&quot;, &quot;OG&quot;, &quot;Midterm_New_Product&quot;, &quot;NP&quot;, &quot;Midterm_Other&quot;, &quot;NP&quot;, &quot;NONE&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PH milestone set</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Health_Score__c</fullName>
+    <description>Key Milestone Completion (Deal_Milestones__c.Opportunity_Health_Score__c) captured at snapshot time. Not the basis for Health_Status__c, which uses Close Confidence. Widened from 2 to 3 digits on 2026-10-26 so a score of 100 can be stored.</description>
+    <label>Health Score</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

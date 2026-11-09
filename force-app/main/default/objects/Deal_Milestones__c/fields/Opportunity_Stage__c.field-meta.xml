@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Stage__c</fullName>
+    <description>Pipeline Health: Stage picklist on the Deal Milestone. Values must match the Opportunity stage picklist exactly (0. Identify, 2. Discover).</description>
+    <inlineHelpText>Opportunity stage for this milestone record.</inlineHelpText>
+    <label>Opportunity Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>0. Identify</fullName>
+                <default>false</default>
+                <label>0. Identify</label>
+            </value>
+            <value>
+                <fullName>1. Mutual Interest</fullName>
+                <default>false</default>
+                <label>1. Mutual Interest</label>
+            </value>
+            <value>
+                <fullName>2. Discover</fullName>
+                <default>false</default>
+                <label>2. Discover</label>
+            </value>
+            <value>
+                <fullName>3. Validate</fullName>
+                <default>false</default>
+                <label>3. Validate</label>
+            </value>
+            <value>
+                <fullName>4. Decide</fullName>
+                <default>false</default>
+                <label>4. Decide</label>
+            </value>
+            <value>
+                <fullName>5. Negotiate</fullName>
+                <default>false</default>
+                <label>5. Negotiate</label>
+            </value>
+            <value>
+                <fullName>6. Commit</fullName>
+                <default>false</default>
+                <label>6. Commit</label>
+            </value>
+            <value>
+                <fullName>Closed Won</fullName>
+                <default>false</default>
+                <label>Closed Won</label>
+            </value>
+            <value>
+                <fullName>Closed Lost</fullName>
+                <default>false</default>
+                <label>Closed Lost</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

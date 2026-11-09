@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_Won__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Pipeline Health: Closed Won. Stage, date or forecast field used by milestone reports to filter and group by stage and timing.</description>
+    <inlineHelpText>Stage or date value used in reporting. Formula fields are read-only; change the Opportunity instead.</inlineHelpText>
+    <label>Closed Won</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

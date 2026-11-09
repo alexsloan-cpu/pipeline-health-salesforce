@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Calc_S6_Points_Max__c</fullName>
+    <description>Pipeline Health stored calc. Score points possible on stage 6 milestones for this record type. Set by the PH_Calc_Health before-save flow. Do not edit by hand.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Calculated automatically from the milestone scores. Read only.</inlineHelpText>
+    <label>PH calc S6 points max</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Health_Status__c</fullName>
+    <description>Health status at snapshot time, from Close Confidence (Close_Likelihood_Score__c): 70 or more is Healthy, 45 or more is Needs Attention, anything else (including blank) is Off Track. Same cutoffs as Deal_Milestones__c.Health_Category__c. Changed from Key Milestone Completion on 2026-10-28.</description>
+    <label>Health Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Healthy</fullName>
+                <default>false</default>
+                <label>Healthy</label>
+            </value>
+            <value>
+                <fullName>Needs Attention</fullName>
+                <default>false</default>
+                <label>Needs Attention</label>
+            </value>
+            <value>
+                <fullName>Off Track</fullName>
+                <default>false</default>
+                <label>Off Track</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

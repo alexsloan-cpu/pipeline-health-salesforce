@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Dropped__c</fullName>
+    <description>Command Center logic, Dropped since last score tile: true when Close Confidence Score is more than half a point below Prior Health Score. Both must have a value.</description>
+    <formula>AND(NOT(ISBLANK(Close_Likelihood_Score__c)), NOT(ISBLANK(Prior_Health_Score__c)), Close_Likelihood_Score__c &lt; Prior_Health_Score__c - 0.005)</formula>
+    <inlineHelpText>Command Center: Dropped since last score. True when Close Confidence is below Prior Health Score by more than 0.5 pts.</inlineHelpText>
+    <label>CC: Dropped since last score</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

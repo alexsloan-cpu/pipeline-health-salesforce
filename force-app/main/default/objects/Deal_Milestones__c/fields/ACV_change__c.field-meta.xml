@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ACV_change__c</fullName>
+    <description>Pipeline Health: ACV (Change $). Org, owner or segment field used to report Deal Milestones by team, segment or role without joins.</description>
+    <formula>Opportunity__r.ACV_change__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Used for team and segment reporting. Formula fields are read-only; change the source record instead.</inlineHelpText>
+    <label>ACV (Change $)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

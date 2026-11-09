@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Overage_Applies__c</fullName>
+    <description>Pipeline Health gate for the two overage milestones (Overage Driver, Overage Confirmed). On Midterm New Product they apply only when the opportunity subtype is Additional Product + Increase Usage. Every other record type, including Midterm Other: always true. Keyed on Record Type ID so flow entry conditions can reference it.</description>
+    <formula>IF(LEFT(RecordTypeId, 15) = &quot;012PU00000MDu2v&quot;, Opportunity_Sub__c = &quot;Additional Product + Increase Usage&quot;, TRUE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True when the overage milestones count for this deal. Only Midterm New Product deals with subtype Additional Product + Increase Usage turn this on for that type.</inlineHelpText>
+    <label>PH overage milestones apply</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

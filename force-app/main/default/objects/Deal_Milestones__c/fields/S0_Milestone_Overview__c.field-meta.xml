@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>S0_Milestone_Overview__c</fullName>
+    <description>Pipeline Health: S0 Milestone Overview. Momentum-written narrative summarizing milestone evidence from calls.</description>
+    <inlineHelpText>AI summary from calls. Read-only for most users.</inlineHelpText>
+    <label>S0 Milestone Overview</label>
+    <length>5000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

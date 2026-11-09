@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>S2_Health__c</fullName>
+    <description>Pipeline Health: S2 Health. Health display formula.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK( S2_Milestone_Score__c ), &quot;⚪ No Data&quot;,
+    IF(S2_Milestone_Score__c &gt;= 0.70, &quot;🟢 Healthy&quot;,
+        IF(S2_Milestone_Score__c &gt;= 0.45, &quot;🟡 Needs Attention&quot;, &quot;🔴 Off Track&quot;)
+    )
+    &amp; &quot; (&quot; &amp; TEXT(ROUND(S2_Milestone_Score__c * 100, 0)) &amp; &quot;%)&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Read-only health indicator derived from milestone scores. Do not edit.</inlineHelpText>
+    <label>S2 Health</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

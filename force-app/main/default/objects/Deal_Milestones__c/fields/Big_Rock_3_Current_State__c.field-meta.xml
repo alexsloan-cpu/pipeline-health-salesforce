@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Big_Rock_3_Current_State__c</fullName>
+    <description>AI-written summary of the customer&apos;s current state, primary use cases and the success criteria they plan to prove out with Iterable. Starts with Known, Partial or Not yet known. Shown in the Big Rocks section of the Deal Health record.</description>
+    <inlineHelpText>Current state, use cases and how they will prove success. Filled automatically from dated evidence.</inlineHelpText>
+    <label>Big Rock 3 Current State</label>
+    <length>1000</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

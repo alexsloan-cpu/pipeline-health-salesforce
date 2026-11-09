@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PricingAlignedAgreed_S4__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Pipeline Health: Pricing Aligned &amp; Agreed. Score for the Pricing Aligned &amp; Agreed milestone, written by Momentum from call content and correctable by the rep. Feeds stage completion and Close Confidence.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Milestone score from Momentum. Correct it if it is wrong.</inlineHelpText>
+    <label>Pricing Aligned &amp; Agreed</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

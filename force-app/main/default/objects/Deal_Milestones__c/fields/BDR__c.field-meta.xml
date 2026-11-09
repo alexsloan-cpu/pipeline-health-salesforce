@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BDR__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Pipeline Health: BDR. Org, owner or segment field used to report Deal Milestones by team, segment or role without joins.</description>
+    <inlineHelpText>Used for team and segment reporting. Formula fields are read-only; change the source record instead.</inlineHelpText>
+    <label>BDR</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Deal_Milestones1</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

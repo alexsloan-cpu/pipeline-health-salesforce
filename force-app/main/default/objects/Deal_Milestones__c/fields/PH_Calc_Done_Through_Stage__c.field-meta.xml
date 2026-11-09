@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_Calc_Done_Through_Stage__c</fullName>
+    <description>Pipeline Health stored calc (v42). Milestones complete from stage 0 through the current stage (PH_Stage__c logic). Set by the PH_Calc_Health before-save flow. Do not edit by hand.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Calculated automatically from the milestone scores. Read only.</inlineHelpText>
+    <label>PH calc done through stage</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

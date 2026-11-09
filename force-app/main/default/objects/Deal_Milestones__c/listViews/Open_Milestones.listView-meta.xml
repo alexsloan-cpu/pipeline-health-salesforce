@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Milestones</fullName>
+    <columns>RECORDTYPE</columns>
+    <columns>Overall_Health__c</columns>
+    <columns>Close_Likelihood_Score__c</columns>
+    <columns>Opportunity_Health_Score__c</columns>
+    <columns>NAME</columns>
+    <columns>Opportunity__c</columns>
+    <columns>ACV_change__c</columns>
+    <columns>Current_Opportunity_Stage__c</columns>
+    <columns>Opportunity_Close_Date__c</columns>
+    <columns>Owner_Manager2__c</columns>
+    <columns>Owner2__c</columns>
+    <columns>Automation_Trigger__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Milestone_Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>Open Milestones</label>
+</ListView>

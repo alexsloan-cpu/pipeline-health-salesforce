@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Close_Window__c</fullName>
+    <description>Command Center logic, Closing window card: days from today to the Opportunity Close Date. Past due, Next 30 days, 31 to 60, 61 to 90, Later (also blank close date).</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Opportunity__r.CloseDate), &quot;5. Later&quot;, IF(Opportunity__r.CloseDate &lt; TODAY(), &quot;1. Past due&quot;, IF(Opportunity__r.CloseDate - TODAY() &lt;= 30, &quot;2. Next 30 days&quot;, IF(Opportunity__r.CloseDate - TODAY() &lt;= 60, &quot;3. 31 to 60 days&quot;, IF(Opportunity__r.CloseDate - TODAY() &lt;= 90, &quot;4. 61 to 90 days&quot;, &quot;5. Later&quot;)))))</formula>
+    <inlineHelpText>Command Center: Closing window. Days from today to the Opportunity Close Date.</inlineHelpText>
+    <label>CC: Closing window</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

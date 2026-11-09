@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Completed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>DEPRECATED, slated for deletion in the Pipeline Health cleanup. Never used, zero records. Do not use in new reports, flows or layouts. API name is unchanged so existing references keep working until removal.</description>
+    <inlineHelpText>Deprecated. Do not use.</inlineHelpText>
+    <label>z - Completed</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

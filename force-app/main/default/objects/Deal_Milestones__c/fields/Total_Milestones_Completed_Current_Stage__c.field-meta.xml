@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Milestones_Completed_Current_Stage__c</fullName>
+    <description>Pipeline Health: Total Milestones Completed Current Stage. Stage roll-up formula that counts or scores completed milestones. Denominators are hardcoded today, see the Deal Milestones Field Audit Formula Map. Nov 2, 2026: added the 6. Commit branch (adds Quote Approved) to match the New Business rubric.</description>
+    <externalId>false</externalId>
+    <formula>CASE(Current_Opportunity_Stage__c,
+&quot;0. Identify&quot;,PainIdentified_S1__c+CompellingEventIdentified_S2__c,
+&quot;1. Mutual Interest&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c,
+&quot;2. Discover&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c+CompetitionIdentified_S2__c+ChampionIdentified_S2__c+WhyIterable_S2__c,
+&quot;3. Validate&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c+CompetitionIdentified_S2__c+ChampionIdentified_S2__c+WhyIterable_S2__c+ServicesNeedIdentified_S3__c+PurchaseTimelineAgreed_S3__c+PartnerEngaged_S3__c+TechnicalValidationCompleted_S3__c+RisksIdentified_S3__c+TechnicalFitScore_S3__c,
+&quot;4. Decide&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c+CompetitionIdentified_S2__c+ChampionIdentified_S2__c+WhyIterable_S2__c+ServicesNeedIdentified_S3__c+PurchaseTimelineAgreed_S3__c+PartnerEngaged_S3__c+TechnicalValidationCompleted_S3__c+RisksIdentified_S3__c+TechnicalFitScore_S3__c+InitialPricingPresented_S4__c+PaperProcessConfirmed_S4__c+PricingAlignedAgreed_S4__c,
+&quot;5. Negotiate&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c+CompetitionIdentified_S2__c+ChampionIdentified_S2__c+WhyIterable_S2__c+ServicesNeedIdentified_S3__c+PurchaseTimelineAgreed_S3__c+PartnerEngaged_S3__c+TechnicalValidationCompleted_S3__c+RisksIdentified_S3__c+TechnicalFitScore_S3__c+InitialPricingPresented_S4__c+PaperProcessConfirmed_S4__c+PricingAlignedAgreed_S4__c+LegalITReviewCompleted_S5__c+ProcurementAligned_S5__c,
+&quot;6. Commit&quot;,PainIdentified_S1__c+FundingDetermined_S1__c+PainWorthInvestingTimeIn_S1__c+CompellingEventIdentified_S2__c+CompetitionIdentified_S2__c+ChampionIdentified_S2__c+WhyIterable_S2__c+ServicesNeedIdentified_S3__c+PurchaseTimelineAgreed_S3__c+PartnerEngaged_S3__c+TechnicalValidationCompleted_S3__c+RisksIdentified_S3__c+TechnicalFitScore_S3__c+InitialPricingPresented_S4__c+PaperProcessConfirmed_S4__c+PricingAlignedAgreed_S4__c+LegalITReviewCompleted_S5__c+ProcurementAligned_S5__c+Quote_Approved_S6__c,
+0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Read-only roll-up of completed milestones. Calculated automatically.</inlineHelpText>
+    <label>Total Milestones Completed Current Stage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

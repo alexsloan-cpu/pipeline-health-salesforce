@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Scored_Share__c</fullName>
+    <description>Command Center logic, Deals scored tile: 100% when Close Confidence Score has a value, 0% when blank. The average across deals is the share of deals scored.</description>
+    <formula>IF(ISBLANK(Close_Likelihood_Score__c), 0, 1)</formula>
+    <inlineHelpText>Command Center: Deals scored. Average this field to get the share of deals with a Close Confidence Score.</inlineHelpText>
+    <label>CC: Scored share</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

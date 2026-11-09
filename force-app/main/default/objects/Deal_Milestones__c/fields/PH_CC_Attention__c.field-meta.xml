@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Attention__c</fullName>
+    <description>Command Center logic, Coaching list card: true when Health Category is Off Track or Needs Attention, or CC: Dropped since last score is true, or CC: Commit backing is Not backed.</description>
+    <formula>OR(CONTAINS(Health_Category__c, &quot;Off Track&quot;), CONTAINS(Health_Category__c, &quot;Needs Attention&quot;), PH_CC_Dropped__c, PH_CC_Commit_Backing__c = &quot;Not backed (under 70%)&quot;)</formula>
+    <inlineHelpText>Command Center: Coaching list. Off track, needs attention, dropped since last score, or Commit not backed.</inlineHelpText>
+    <label>CC: Needs attention</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

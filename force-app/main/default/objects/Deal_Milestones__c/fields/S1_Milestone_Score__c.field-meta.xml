@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>S1_Milestone_Score__c</fullName>
+    <description>Pipeline Health: S1 Milestone Score. Stage roll-up formula that counts or scores completed milestones. Denominators are hardcoded today, see the Deal Milestones Field Audit Formula Map.</description>
+    <formula>S1_Milestone_Completion__c /6</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Read-only roll-up of completed milestones. Calculated automatically.</inlineHelpText>
+    <label>S1 Milestone Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

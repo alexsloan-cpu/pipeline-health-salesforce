@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Stage_Pre_Close__c</fullName>
+    <description>Pipeline Health: Last Stage Pre-Close. Stage, date or forecast field used by milestone reports to filter and group by stage and timing.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+    Current_Opportunity_Stage__c &lt;&gt; &quot;Closed Lost&quot;,
+    &quot;&quot;,
+    IF(
+        ISBLANK(Date_Stage_1__c),
+        &quot;Stage 0&quot;,
+        IF(
+            ISBLANK(Date_Stage_2__c),
+            &quot;Stage 1&quot;,
+            IF(
+                ISBLANK(Date_Stage_3__c),
+                &quot;Stage 2&quot;,
+                IF(
+                    ISBLANK(Date_Stage_4__c),
+                    &quot;Stage 3&quot;,
+                    IF(
+                        ISBLANK(Date_Stage_5__c),
+                        &quot;Stage 4&quot;,
+                        &quot;Stage 5&quot;
+                    )
+                )
+            )
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Stage or date value used in reporting. Formula fields are read-only; change the Opportunity instead.</inlineHelpText>
+    <label>Last Stage Pre-Close</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

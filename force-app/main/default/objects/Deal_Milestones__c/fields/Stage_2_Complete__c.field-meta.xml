@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage_2_Complete__c</fullName>
+    <description>Pipeline Health: Count of completed milestones for Stage 2. Set by the stage roll-up flow so stage completion divides by a stored total rather than a hardcoded number.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Completed milestones in Stage 2. Set by automation.</inlineHelpText>
+    <label>Stage 2 Complete</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

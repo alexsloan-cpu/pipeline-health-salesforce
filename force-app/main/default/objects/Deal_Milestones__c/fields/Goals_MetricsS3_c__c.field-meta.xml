@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Goals_MetricsS3_c__c</fullName>
+    <description>DEPRECATED, slated for deletion in the Pipeline Health cleanup. Never used, zero records. Do not use in new reports, flows or layouts. API name is unchanged so existing references keep working until removal.</description>
+    <inlineHelpText>Deprecated. Do not use.</inlineHelpText>
+    <label>z - Business Goals with Metrics</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

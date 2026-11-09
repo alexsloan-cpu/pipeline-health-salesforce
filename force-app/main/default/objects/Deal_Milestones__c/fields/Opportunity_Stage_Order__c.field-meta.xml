@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Stage_Order__c</fullName>
+    <description>DEPRECATED, slated for deletion in the Pipeline Health cleanup. Never used, zero records. Do not use in new reports, flows or layouts. API name is unchanged so existing references keep working until removal.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Deprecated. Do not use.</inlineHelpText>
+    <label>z - Opportunity Stage Order</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

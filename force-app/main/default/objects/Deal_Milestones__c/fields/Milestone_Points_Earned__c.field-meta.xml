@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Milestone_Points_Earned__c</fullName>
+    <description>Pipeline Health: milestone points (0 to 3 each) earned through the current stage, using the milestone set for the record type. Numerator of Key Milestone Completion.</description>
+    <externalId>false</externalId>
+    <formula>PH_Calc_Points_Earned__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Points earned on milestones up to and including the current stage.</inlineHelpText>
+    <label>Milestone Points Earned</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Timing_Health_Score__c</fullName>
+    <description>Pipeline Health: Timing Health Score. Deal momentum output written by Momentum from call content.</description>
+    <formula>( Buyer_Momentum_Control_Score__c + Champion_Involvement_Score__c + Objection_Resolution_Status_Score__c + Clear_Next_Steps_Score__c )/20</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>AI read on deal momentum from calls. Treat as a signal.</inlineHelpText>
+    <label>Timing Health Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

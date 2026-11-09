@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampionIdentified_S2__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Pipeline Health: Champion Identified. Score for the Champion Identified milestone, written by Momentum from call content and correctable by the rep. Feeds stage completion and Close Confidence.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Milestone score from Momentum. Correct it if it is wrong.</inlineHelpText>
+    <label>Champion Identified</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

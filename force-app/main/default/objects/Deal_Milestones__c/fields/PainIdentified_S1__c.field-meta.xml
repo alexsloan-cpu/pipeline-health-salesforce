@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PainIdentified_S1__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Pipeline Health: Pain Identified. Score for the Pain Identified milestone, written by Momentum from call content and correctable by the rep. Feeds stage completion and Close Confidence.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Milestone score from Momentum. Correct it if it is wrong.</inlineHelpText>
+    <label>Pain Identified</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

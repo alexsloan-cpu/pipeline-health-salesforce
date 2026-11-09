@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Score__c</fullName>
+    <description>DEPRECATED, slated for deletion in the Pipeline Health cleanup. Test formula. Do not use in new reports, flows or layouts. API name is unchanged so existing references keep working until removal.</description>
+    <formula>IF(
+  CONTAINS(Close_Confidence_Score_Text__c, &quot;Not enough information to generate&quot;) || ISNULL(Close_Confidence_Score_Text__c) || Close_Confidence_Score_Text__c = &quot;&quot;,
+  0,
+  VALUE(MID(Close_Confidence_Score_Text__c, FIND(&quot;%&quot;, Close_Confidence_Score_Text__c) - 2, 2)) / 100
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Deprecated. Do not use.</inlineHelpText>
+    <label>z - Close Score Test</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

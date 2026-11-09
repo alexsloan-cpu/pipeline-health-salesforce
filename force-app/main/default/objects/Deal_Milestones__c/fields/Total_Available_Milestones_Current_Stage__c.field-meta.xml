@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Available_Milestones_Current_Stage__c</fullName>
+    <description>Pipeline Health: Total Available Milestones Current Stage. Stage roll-up formula that counts or scores completed milestones. Denominators are hardcoded today, see the Deal Milestones Field Audit Formula Map.</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+TEXT(Opportunity__r.StageName),
+
+/* Stage 0 */
+&quot;0. Identify&quot;,6,
+
+/* Stage 1 */
+&quot;1. Mutual Interest&quot;,12,
+
+/* Stage 2 */
+&quot;2. Discover&quot;,23,
+
+/* Stage 3 */
+&quot;3. Validate&quot;,41,
+
+/* Stage 4 */
+&quot;4. Decide&quot;,50,
+
+/* Stage 5 */
+&quot;5. Negotiate&quot;,56,
+
+/* Stage 6 */
+&quot;6. Commit&quot;,58,
+
+/* Default */
+0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Read-only roll-up of completed milestones. Calculated automatically.</inlineHelpText>
+    <label>Total Available Milestones Current Stage</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PH_CC_Attention_Weight__c</fullName>
+    <description>Command Center logic, Coaching list sort order (Manager view): Dropped 1000, Off Track 500 or Needs Attention 250, Commit not backed 400. Highest first, then largest ACV.</description>
+    <externalId>false</externalId>
+    <formula>IF(PH_CC_Dropped__c, 1000, 0) + IF(CONTAINS(Health_Category__c, &quot;Off Track&quot;), 500, IF(CONTAINS(Health_Category__c, &quot;Needs Attention&quot;), 250, 0)) + IF(PH_CC_Commit_Backing__c = &quot;Not backed (under 70%)&quot;, 400, 0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Command Center: Coaching list sort. Dropped 1000 + Off Track 500 or Needs Attention 250 + Commit not backed 400.</inlineHelpText>
+    <label>CC: Attention weight</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

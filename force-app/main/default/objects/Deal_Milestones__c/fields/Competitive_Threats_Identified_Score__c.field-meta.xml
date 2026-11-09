@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Competitive_Threats_Identified_Score__c</fullName>
+    <description>AI score (0-3) for the Competitive Threats Identified milestone, stage S0. Used by: Renewal.</description>
+    <externalId>false</externalId>
+    <label>Competitive Threats Identified Score</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

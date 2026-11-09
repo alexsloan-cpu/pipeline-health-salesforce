@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Likelihood_Score__c</fullName>
+    <description>Pipeline Health: Close Confidence Score, the primary health signal. Percent written by Momentum from call content and milestone evidence. Green at 70% or more, yellow at 45% or more, red below.</description>
+    <inlineHelpText>Likelihood the deal closes, from calls and milestone evidence. 70% or more is green, 45% or more is yellow.</inlineHelpText>
+    <label>Close Confidence Score</label>
+    <precision>3</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>
