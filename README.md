@@ -26,13 +26,13 @@ git add -A && git commit -m "Retrieve prod source" && git push
 ./scripts/dry-run.sh
 ```
 
-Validates everything in `manifest/package.xml` against production with all local tests. Deploys nothing. Run it after any change to files under `force-app`. A pass gives a job id that can be quick deployed with approval.
+Validates everything in `manifest/package.xml` against production with relevant tests only (RunRelevantTests, much faster than all local tests). Deploys nothing. If a real deploy ever needs the full suite, swap in RunLocalTests. Run it after any change to files under `force-app`. A pass gives a job id that can be quick deployed with approval.
 
 
 Never use `sf project deploy start` on production. Validate, get explicit approval, then quick deploy.
 
 ```
-sf project deploy validate --manifest manifest/package.xml --target-org iterable-prod --test-level RunLocalTests
+sf project deploy validate --manifest manifest/package.xml --target-org iterable-prod --test-level RunRelevantTests
 sf project deploy quick --job-id <jobId> --target-org iterable-prod
 ```
 
@@ -56,7 +56,7 @@ The artifacts are the source of truth until go-live. Nothing from this build sho
 Before this can pass: deactivate the active flows, unassign the PH_* permission sets (271 users on PH_Classic, 49 on PH_User, 33 on PH_Admin), and remove the FlexiPages as active record page overrides. Validate will list anything still blocking.
 
 ```
-sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunLocalTests
+sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunRelevantTests
 ```
 
 Never quick deploy this without Alex's explicit approval. Live users lose these pages and permissions on deploy.

@@ -14,7 +14,7 @@ if ! sf org display --target-org "$ORG" >/dev/null 2>&1; then
   exit 1
 fi
 
-LEVEL="RunLocalTests"
+LEVEL="RunRelevantTests"
 
 sf project deploy validate \
   --manifest manifest/package.xml \
