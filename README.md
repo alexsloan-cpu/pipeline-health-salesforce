@@ -56,7 +56,7 @@ The artifacts are the source of truth until go-live. Nothing from this build sho
 Before this can pass: deactivate the active flows, unassign the PH_* permission sets (271 users on PH_Classic, 49 on PH_User, 33 on PH_Admin), and remove the FlexiPages as active record page overrides. Validate will list anything still blocking.
 
 ```
-sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level NoTestRun
+sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunLocalTests
 ```
 
 Never quick deploy this without Alex's explicit approval. Live users lose these pages and permissions on deploy.

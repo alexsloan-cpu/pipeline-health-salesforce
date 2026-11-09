@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Deployment dry run against production. Validates only, deploys nothing.
 # Usage: ./scripts/dry-run.sh            (all components in manifest/package.xml)
-#        ./scripts/dry-run.sh --quick-tests   (skip full local tests; faster, but cannot be quick deployed)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -15,12 +14,7 @@ if ! sf org display --target-org "$ORG" >/dev/null 2>&1; then
   exit 1
 fi
 
-if [[ "${1:-}" == "--quick-tests" ]]; then
-  LEVEL="NoTestRun"
-  echo "NoTestRun: sanity check only. A passing run here is not quick-deployable."
-else
-  LEVEL="RunLocalTests"
-fi
+LEVEL="RunLocalTests"
 
 sf project deploy validate \
   --manifest manifest/package.xml \
