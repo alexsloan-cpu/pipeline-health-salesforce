@@ -20,7 +20,14 @@ sf project retrieve start --manifest manifest/package.xml --target-org iterable-
 git add -A && git commit -m "Retrieve prod source" && git push
 ```
 
-## Deploy to production
+## Dry run any time
+
+```
+./scripts/dry-run.sh
+```
+
+Validates everything in `manifest/package.xml` against production with all local tests. Deploys nothing. Run it after any change to files under `force-app`. A pass gives a job id that can be quick deployed with approval.
+
 
 Never use `sf project deploy start` on production. Validate, get explicit approval, then quick deploy.
 
