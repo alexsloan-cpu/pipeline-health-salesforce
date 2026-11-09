@@ -51,7 +51,7 @@ Also no longer in prod as of today: PhCommandCenterController, PhDashboardAction
 
 ## Remove the early build from production (validate only until approved)
 
-The artifacts are the source of truth until go-live. Nothing from this build should be live in prod, but an earlier version is. `destructive/destructiveChanges.xml` removes the 10 Apex classes, 28 LWC, 7 FlexiPages, 8 flows and 5 permission sets. It does NOT touch the Deal_Milestones__c or Pipeline_Health_Snapshot__c objects or their records.
+The artifacts are the source of truth until go-live. Nothing from this build should be live in prod, but an earlier version is. `destructive/destructiveChanges.xml` removes the 10 Apex classes, 28 LWC, 7 FlexiPages, 6 flows (Deal_Milestone_Update_Checkbox_to_FALSE and its PH_Notify_Fault subflow are kept) and 5 permission sets. It does NOT touch the Deal_Milestones__c or Pipeline_Health_Snapshot__c objects or their records.
 
 Before this can pass: deactivate the active flows, unassign the PH_* permission sets (271 users on PH_Classic, 49 on PH_User, 33 on PH_Admin), and remove the FlexiPages as active record page overrides. Validate will list anything still blocking.
 
