@@ -1,0 +1,18 @@
+<template>
+    <lightning-modal-header label="Update Forecast Category"></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="hint">{hint}</div>
+        <lightning-record-edit-form object-api-name="Opportunity" record-id={opportunityId} onsuccess={handleSuccess} onerror={handleError}>
+            <lightning-messages></lightning-messages>
+            <lightning-input-field field-name="ForecastCategory__c"></lightning-input-field>
+            <lightning-input-field field-name="Next_Step__c"></lightning-input-field>
+        </lightning-record-edit-form>
+        <template lwc:if={errorText}>
+            <div class="err">{errorText}</div>
+        </template>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+        <lightning-button class="save" variant="brand" label="Save" onclick={handleSave} disabled={saving}></lightning-button>
+    </lightning-modal-footer>
+</template>

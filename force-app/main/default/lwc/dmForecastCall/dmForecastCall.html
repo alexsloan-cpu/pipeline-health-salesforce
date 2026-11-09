@@ -1,0 +1,55 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="row-inline">
+                <div class="title">Forecast call<span class="ai-tag">AI</span></div>
+                <c-dm-ask-assistant record-id={recordId} layout={layout}></c-dm-ask-assistant>
+            </div>
+            <div class="row-inline">
+                <span class="meta">{updatedText}</span>
+                <c-dm-update-forecast record-id={recordId} opportunity-id={oppId} compact></c-dm-update-forecast>
+            </div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <div class="banner">
+                <div class="cell cell-first">
+                    <div class="label">Owner call vs evidence</div>
+                    <div class="row-inline"><span class="cat">{ownerCatText}</span><span aria-hidden="true">→</span><span class="cat">{evidenceCatText}</span></div>
+                    <div class={callVerdict.cls}>{callVerdict.text}</div>
+                    <div class="small">{reason}</div>
+                </div>
+                <div class="cell">
+                    <div class="label">Amount / weighted</div>
+                    <div class="mid">{amountText} <span class="muted">{weightedText}</span></div>
+                    <div class="small">{confText}</div>
+                </div>
+                <div class="cell">
+                    <div class="label">Close date</div>
+                    <div class="mid">{closeText} <span class="muted small">{daysText}</span></div>
+                    <div class={pushText.cls}>{pushText.text}</div>
+                </div>
+                <div class="cell">
+                    <div class="label">Risk signal</div>
+                    <div class="row-inline"><span class={riskClass}>{riskText}</span><span class="small">{daysInStage}</span></div>
+                    <div class="small">{riskDetail}</div>
+                </div>
+                <div class="cell">
+                    <div class="label">{gapTitle}</div>
+                    <template lwc:if={hasGaps}>
+                        <template for:each={gaps} for:item="g">
+                            <div key={g.key} class="small">{g.text}</div>
+                        </template>
+                        <div class="small muted">{gapHint}</div>
+                    </template>
+                    <template lwc:else>
+                        <div class="small">No open milestones in the current stage. Milestones complete at full marks.</div>
+                    </template>
+                </div>
+            </div>
+            <div class="meta foot">Evidence category comes from Close Confidence: 70% or more is Commit, 45% or more is Best Case, below that Pipeline.</div>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

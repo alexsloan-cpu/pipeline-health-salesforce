@@ -1,0 +1,34 @@
+<template>
+    <div class="strip">
+        <template lwc:if={hasFacts}>
+            <div class="facts">
+                <template for:each={facts} for:item="f">
+                    <span key={f.key} class="fact">
+                        <span class="flabel">{f.label}</span>
+                        <template lwc:if={f.isLink}>
+                            <a href="#" data-id={f.id} onclick={handleFact}>{f.text}</a>
+                        </template>
+                        <template lwc:else>{f.text}</template>
+                    </span>
+                </template>
+                <template lwc:if={usagePill}><span class={usagePill.cls}>{usagePill.text}</span></template>
+                <template lwc:if={contactPill}><span class={contactPill.cls}>{contactPill.text}</span></template>
+                <template lwc:if={partner}><span class={partner.cls}>{partner.text}</span></template>
+            </div>
+        </template>
+        <div class="bar">
+            <span class="label">Next best step</span>
+            <span class="text">{stepText}</span>
+            <button type="button" class="link" onclick={handleToggle} aria-expanded={showAll}>{allLabel}</button>
+            <div class="actions">
+                <div class="fc"><c-dm-update-forecast record-id={recordId} compact secondary></c-dm-update-forecast></div>
+                <div class="ask"><c-dm-ask-assistant record-id={recordId} layout={layout} variant="button"></c-dm-ask-assistant></div>
+            </div>
+        </div>
+        <template lwc:if={showAll}>
+            <div class="all">
+                <c-dm-next-actions record-id={recordId} layout={layout}></c-dm-next-actions>
+            </div>
+        </template>
+    </div>
+</template>

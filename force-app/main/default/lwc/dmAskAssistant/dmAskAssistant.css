@@ -1,0 +1,63 @@
+:host {
+    display: inline-block;
+}
+.ask {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #0b5cab;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.ask:hover,
+.ask:focus-visible {
+    text-decoration: underline;
+    color: #014486;
+}
+.ask:disabled {
+    color: #939393;
+    cursor: default;
+    text-decoration: none;
+}
+.spark {
+    font-size: 19px;
+}
+
+.copybox {
+    position: fixed;
+    top: 0;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.ask.ask-btn {
+    background: #0b5cab;
+    color: #ffffff;
+    border: 1px solid #0b5cab;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.ask.ask-btn:hover,
+.ask.ask-btn:focus-visible {
+    background: #014486;
+    color: #ffffff;
+    text-decoration: none;
+}
+.ask.ask-btn:disabled {
+    background: #c9c9c9;
+    border-color: #c9c9c9;
+    color: #ffffff;
+}
+.ask.ask-btn .spark {
+    font-size: 14px;
+}

@@ -1,0 +1,101 @@
+:host {
+    display: block;
+}
+.strip {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 0 0 8px 0;
+}
+.bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #eaf3fc;
+    border: 1px solid #bcd6f0;
+    border-left: 5px solid #0b5cab;
+    border-radius: 6px;
+    padding: 8px 12px;
+    flex-wrap: wrap;
+}
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0b4f9e;
+    white-space: nowrap;
+}
+.text {
+    flex: 1 1 280px;
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #181818;
+    line-height: 1.35;
+}
+.link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0b5cab;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.link:hover,
+.link:focus-visible {
+    text-decoration: underline;
+}
+.all {
+    margin-top: 8px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+/* dmUpdateForecast sets container-type: inline-size, so it needs a fixed width here or it collapses. */
+.fc {
+    flex: 0 0 210px;
+    width: 210px;
+}
+.ask {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+    font-size: 13px;
+    color: #181818;
+    padding: 2px 4px 8px 4px;
+}
+.fact {
+    white-space: nowrap;
+}
+.flabel {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+    margin-right: 6px;
+}
+.facts a {
+    color: #0b5cab;
+}
+.pill { font-size: 12px; font-weight: 700; padding: 2px 10px; border-radius: 999px; border: 1px solid; }
+.pill.good { background: #eaf7ee; border-color: #bfe3cb; color: #1e6b3a; }
+.pill.info { background: #eaf2fb; border-color: #c5dcf3; color: #0b5cab; }
+.pill.none { background: #f3f3f3; border-color: #dddbda; color: #5c5c5c; }
+
+.pill.warn { background: #fff4de; border-color: #f0d9a8; color: #8a5a00; }
+.pill.bad { background: #fde8e8; border-color: #f2c1c1; color: #8f1d26; }

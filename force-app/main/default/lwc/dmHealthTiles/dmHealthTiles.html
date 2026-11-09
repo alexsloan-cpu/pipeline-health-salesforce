@@ -1,0 +1,90 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="row-inline">
+                <div class="title">Health at a glance</div>
+                <c-dm-ask-assistant record-id={recordId} layout={layout}></c-dm-ask-assistant>
+            </div>
+            <div class="meta">{updatedText}</div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <div class="grid">
+                <template for:each={tiles} for:item="t">
+                    <button key={t.key} type="button" class={t.cardClass} data-key={t.key} aria-expanded={t.expanded} onclick={handleToggle}>
+                        <span class="label">{t.label}</span>
+                        <span class="value">{t.value}</span>
+                        <template lwc:if={t.hasBar}>
+                            <span class="bar"><span class={t.fillClass} style={t.barStyle}></span></span>
+                        </template>
+                        <template lwc:if={t.hasSub}>
+                            <span class={t.subClass}>{t.sub}</span>
+                        </template>
+                        <span class="hint">{t.hint}</span>
+                    </button>
+                </template>
+            </div>
+            <template lwc:if={detail}>
+                <div class="detail" role="region" aria-label={detail.title}>
+                    <div class="dhead">
+                        <div>
+                            <div class="dtitle">{detail.title}</div>
+                            <div class="dabout">{detail.about}</div>
+                        </div>
+                        <button type="button" class="close" onclick={handleClose}>Close</button>
+                    </div>
+                    <template lwc:if={detail.hasWarn}>
+                        <div class="warn">{detail.warn}</div>
+                    </template>
+                    <div class="kv">
+                        <template for:each={detail.rows} for:item="x">
+                            <div key={x.key} class="kvrow">
+                                <div class="k">{x.label}</div>
+                                <div class={x.cls}>{x.value}</div>
+                            </div>
+                        </template>
+                    </div>
+                    <template lwc:if={detail.hasStages}>
+                        <div class="sub-title">By stage</div>
+                        <template for:each={detail.stages} for:item="s">
+                            <div key={s.key} class={s.rowClass}>
+                                <div class="stl">{s.label}</div>
+                                <div class="stbar"><span class={s.fillClass} style={s.barStyle}></span></div>
+                                <div class="stt">{s.text}</div>
+                                <div class="sth">{s.health}</div>
+                            </div>
+                        </template>
+                    </template>
+                    <template lwc:if={detail.hasItems}>
+                        <div class="sub-title">{detail.itemsTitle}</div>
+                        <template for:each={detail.items} for:item="i">
+                            <div key={i.key} class="item">
+                                <div class="item-head">
+                                    <span class="item-label">{i.label}</span>
+                                    <span class={i.pillClass}>{i.status}</span>
+                                </div>
+                                <template lwc:if={i.hasReason}>
+                                    <div class="item-reason">{i.reason}</div>
+                                </template>
+                            </div>
+                        </template>
+                        <template lwc:if={detail.hasMore}>
+                            <div class="note">{detail.more}</div>
+                        </template>
+                    </template>
+                    <template for:each={detail.blocks} for:item="b">
+                        <div key={b.key} class="blk">
+                            <div class="sub-title">{b.label}</div>
+                            <div class="blk-text">{b.text}</div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </template>
+        <template lwc:elseif={failed}>
+            <div class="note">Health scores are not available for your profile.</div>
+        </template>
+        <template lwc:else>
+            <div class="note">Loading</div>
+        </template>
+    </div>
+</template>

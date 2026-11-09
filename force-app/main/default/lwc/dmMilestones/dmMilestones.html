@@ -1,0 +1,48 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">Milestones</div>
+            <div class="meta">Each row is milestone, status, score and reason. Edit scores on the Scoring reasons tab.</div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <template for:each={groups} for:item="g">
+                <div key={g.key} class="group">
+                    <button type="button" class={g.headClass} data-key={g.key} aria-expanded={g.ariaExpanded} onclick={handleToggle}>
+                        <span class="gtitle">{g.title}<span class="gsummary">{g.summary}</span></span>
+                        <span class="gtoggle">{g.toggleText}</span>
+                    </button>
+                    <template lwc:if={g.open}>
+                        <template lwc:if={g.hasOverview}>
+                            <div class="overview">{g.overview}</div>
+                        </template>
+                        <template lwc:if={g.hasRows}>
+                            <div class="cols">
+                                <div>Milestone</div>
+                                <div>Status</div>
+                                <div>Score</div>
+                                <div>Reason</div>
+                            </div>
+                            <template for:each={g.rows} for:item="row">
+                                <div key={row.key} class="row">
+                                    <div class="mname">{row.label}</div>
+                                    <div><span class={row.pillClass}>{row.pillText}</span></div>
+                                    <div class="mscore">{row.scoreText}</div>
+                                    <div class="mreason">
+                                        <template lwc:if={row.hasReason}>{row.reason}</template>
+                                        <template lwc:else><span class="muted">No reason recorded</span></template>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        <template lwc:else>
+                            <div class="empty">No scored milestones at this stage. Progress is tracked by the count above.</div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

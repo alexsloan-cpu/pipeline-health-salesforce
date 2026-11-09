@@ -1,0 +1,14 @@
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+.metric { background: var(--slds-g-color-neutral-base-95, #f3f3f3); border-radius: 0.25rem; padding: 0.5rem 0.75rem; }
+.metric-value { font-size: 1.25rem; font-weight: 500; }
+.rep { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-top: 1px solid var(--slds-g-color-border-base-1, #e5e5e5); cursor: pointer; }
+.deal { padding: 0.625rem 0 0.625rem 0.75rem; border-top: 1px solid var(--slds-g-color-border-base-1, #e5e5e5); cursor: pointer; }
+.deal-name { font-weight: 500; }
+.segs { display: flex; gap: 3px; margin-top: 0.5rem; }
+.seg { height: 6px; flex: 1; border-radius: 2px; background: var(--slds-g-color-border-base-2, #c9c9c9); }
+.seg-on { background: var(--slds-g-color-brand-base-50, #0176d3); }
+.chip { display: inline-block; font-size: 0.75rem; padding: 0.0625rem 0.5rem; border-radius: 999px; font-weight: 500; }
+.chip-strong { background: #ebf7e6; color: #0a5a1f; }
+.chip-watch { background: #fff3d6; color: #6b4600; }
+.chip-atrisk { background: #feded8; color: #8a1a0a; }
+.chip-notscored { background: #f3f3f3; color: #444; }

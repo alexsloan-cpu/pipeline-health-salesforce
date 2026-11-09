@@ -1,0 +1,83 @@
+<template>
+    <lightning-card title={title} icon-name="standard:opportunity">
+        <div slot="actions" class="slds-grid slds-grid_vertical-align-center">
+            <span class="slds-text-body_small slds-m-right_small">{subtitle}</span>
+            <template if:true={hasTeam}>
+                <lightning-combobox name="scope" label="Scope" variant="label-hidden" value={scope}
+                    options={scopeOptions} onchange={handleScope}></lightning-combobox>
+            </template>
+        </div>
+        <div class="slds-p-horizontal_medium">
+            <template if:true={loading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+            <template if:true={error}>
+                <p class="slds-text-color_error slds-p-vertical_small">{error}</p>
+            </template>
+            <div class="metrics">
+                <template for:each={metrics} for:item="m">
+                    <div key={m.key} class="metric">
+                        <div class="slds-text-body_small slds-text-color_weak">{m.label}</div>
+                        <div class="metric-value">{m.value}</div>
+                    </div>
+                </template>
+            </div>
+            <div class="slds-m-vertical_small">
+                <lightning-button-group>
+                    <template for:each={filterButtons} for:item="f">
+                        <lightning-button key={f.label} label={f.label} data-label={f.label}
+                            variant={f.variant} onclick={handleFilter}></lightning-button>
+                    </template>
+                </lightning-button-group>
+            </div>
+            <template if:true={empty}>
+                <p class="slds-text-color_weak slds-p-vertical_small">No open deals with milestone records yet.</p>
+            </template>
+            <template for:each={groups} for:item="g">
+                <div key={g.key} class="group">
+                    <template if:true={g.header}>
+                        <div class="rep" data-key={g.key} onclick={toggleRep}>
+                            <div class="slds-grid slds-grid_vertical-align-center">
+                                <lightning-icon icon-name={g.icon} size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                <div>
+                                    <div class="deal-name">{g.name}</div>
+                                    <div class="slds-text-body_small slds-text-color_weak">{g.summary}</div>
+                                </div>
+                            </div>
+                            <span class={g.avgClass}>{g.avg}</span>
+                        </div>
+                    </template>
+                    <template for:each={g.deals} for:item="d">
+                        <div key={d.id} class="deal" data-id={d.id} onclick={toggleDeal}>
+                            <div class="slds-grid slds-grid_align-spread">
+                                <div>
+                                    <div class="deal-name">{d.name}</div>
+                                    <div class="slds-text-body_small slds-text-color_weak">{d.sub}</div>
+                                </div>
+                                <div class="slds-text-align_right">
+                                    <div class="deal-name">{d.amount}</div>
+                                    <span class={d.chipClass}>{d.chip}</span>
+                                </div>
+                            </div>
+                            <div class="segs">
+                                <template for:each={d.segs} for:item="s">
+                                    <div key={s.key} class={s.cls}></div>
+                                </template>
+                            </div>
+                            <template if:true={d.open}>
+                                <div class="slds-m-top_x-small slds-text-body_small">
+                                    <div class="slds-text-color_weak">{d.detail}</div>
+                                    <lightning-button class="slds-m-top_x-small" label="Open record" data-id={d.id}
+                                        icon-name="utility:new_window" icon-position="right" onclick={openRecord}></lightning-button>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <p class="slds-text-body_small slds-text-color_weak slds-m-vertical_small">
+                Strong, Watch and At risk are a signal from Close Confidence (70 and 45 cut points), not a probability.
+            </p>
+        </div>
+    </lightning-card>
+</template>

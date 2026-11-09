@@ -1,0 +1,111 @@
+<template>
+    <div class="card">
+        <button class="head" onclick={toggle} aria-expanded={open}>
+            <span class="caret">{caret}</span>
+            <span class="title">{titleText}</span>
+            <span class="sum">{summary}</span>
+        </button>
+        <template if:true={open}>
+            <div class="body">
+                <div class="scope">
+                    <button type="button" class="sc" aria-pressed={oppPressed} onclick={pickOpp}>This opportunity</button>
+                    <button type="button" class="sc" aria-pressed={acctPressed} onclick={pickAcct}>Whole account</button>
+                </div>
+                <template if:true={error}><p class="muted">{error}</p></template>
+                <template if:true={noOpp}><p class="muted">No linked opportunity.</p></template>
+                <template if:true={hasData}>
+                    <div class="tiles">
+                        <template for:each={tiles} for:item="t">
+                            <div class="tile" key={t.key}>
+                                <div class="tl">{t.label}</div>
+                                <div class="tv">{t.value}</div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <h4>Activity by week</h4>
+                    <div class="chart">
+                        <template for:each={bars} for:item="b">
+                            <div class="col" key={b.key} title={b.title}>
+                                <div class="num">{b.total}</div>
+                                <div class="stack">
+                                    <template for:each={b.segs} for:item="s">
+                                        <div key={s.key} class={s.cls} style={s.style}></div>
+                                    </template>
+                                </div>
+                                <div class="wl">{b.label}</div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="legend">
+                        <span><i class="seg meet"></i>Meetings</span>
+                        <span><i class="seg call"></i>Calls</span>
+                        <span><i class="seg email"></i>Emails</span>
+                        <span><i class="seg other"></i>Other</span>
+                        <span class="muted">Marketing emails excluded</span>
+                    </div>
+
+                    <h4>Who we have talked to</h4>
+                    <template if:true={hasPeople}>
+                        <div class="people">
+                            <template for:each={people} for:item="p">
+                                <div class="person" key={p.id}>
+                                    <div class="pmain">
+                                        <a href={p.link} class="pname" data-id={p.id}>{p.name}</a>
+                                        <span class="ptitle">{p.titleText}</span>
+                                        <template if:true={p.levelText}><span class="pill lvl">{p.levelText}</span></template>
+                                        <template if:true={p.persona}><span class="pill persona">{p.persona}</span></template>
+                                    </div>
+                                    <div class="ptags">
+                                        <template for:each={p.tagList} for:item="g">
+                                            <span class="pill tag" key={g.key}>{g.label}</span>
+                                        </template>
+                                        <template if:true={p.notIdentified}><span class="pill unk">Role not identified</span></template>
+                                    </div>
+                                    <div class={p.touchCls}>
+                                        {p.touchText}<template if:true={p.lastText}> &middot; last {p.lastText}</template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:false={hasPeople}><p class="muted">No contacts on this opportunity.</p></template>
+
+                    <template if:true={hasRoleFields}>
+                        <h4>Roles named in the record</h4>
+                        <div class="rf">
+                            <template for:each={roleFields} for:item="f">
+                                <div class="rrow" key={f.key}>
+                                    <span class="rl">{f.label}</span>
+                                    <span class="rv">{f.value}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <h4>Timeline</h4>
+                    <div class="chips">
+                        <template for:each={chips} for:item="c">
+                            <button key={c.id} class={c.cls} data-id={c.id} aria-pressed={c.pressed} onclick={pick}>{c.label}</button>
+                        </template>
+                    </div>
+                    <template if:true={hasRows}>
+                        <ul class="tl-list">
+                            <template for:each={rows} for:item="t">
+                                <li key={t.id}>
+                                    <span class={t.dotCls}></span>
+                                    <span class="d">{t.dayLabel}</span>
+                                    <span class="k">{t.kindLabel}</span>
+                                    <span class="s">{t.subject}</span>
+                                    <span class="w">{t.who}</span>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                    <template if:false={hasRows}><p class="muted">Nothing logged for this filter.</p></template>
+                    <template if:true={data.capped}><p class="muted">Showing the most recent 2,000 records.</p></template>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

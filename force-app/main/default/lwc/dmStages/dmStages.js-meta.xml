@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>false</isExposed>
+    <description>Stage based milestone sets and helpers for the Option 2 and Option 3 Deal Milestones pages.</description>
+</LightningComponentBundle>

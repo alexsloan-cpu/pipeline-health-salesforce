@@ -1,0 +1,45 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">Will it close on time?</div>
+            <div class="meta">{metaText}</div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <template lwc:if={hasOverview}>
+                <div class="overview">{overview}</div>
+            </template>
+            <template for:each={groups} for:item="g">
+                <div key={g.key} class="sig">
+                    <button type="button" class="sig-row" data-key={g.key} aria-expanded={g.ariaExpanded} aria-label={g.ariaLabel} onclick={handleToggle}>
+                        <span class="sig-text">
+                            <span class="sig-name">{g.title}</span>
+                            <span class="sig-q">{g.question}</span>
+                        </span>
+                        <span class="sig-score">
+                            <span class="dots">
+                                <template for:each={g.dots} for:item="d">
+                                    <span key={d.key} class={d.cls}></span>
+                                </template>
+                            </span>
+                            <span class={g.verdictClass}>{g.verdict}</span>
+                        </span>
+                    </button>
+                    <template lwc:if={g.open}>
+                        <div class="sig-detail">
+                            <template lwc:if={g.hasDetail}>{g.detail}</template>
+                            <template lwc:else><span class="muted">No details recorded</span></template>
+                            <div class="sig-field">Salesforce field: {g.fieldName}</div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <div class="scale">
+                <span>5 Strong</span><span>4 On track</span><span>3 Mixed</span><span>2 Slipping</span><span>1 At risk</span><span>0 No evidence</span>
+            </div>
+            <div class="note">Click a signal for the reason behind its score. AI read from calls and emails; treat it as a signal.</div>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

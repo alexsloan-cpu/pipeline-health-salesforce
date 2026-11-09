@@ -1,0 +1,11 @@
+<template>
+    <div class={cardClass}>
+        <template lwc:if={notCompact}>
+            <div class="head">
+                <div class="title">Forecast category</div>
+            </div>
+            <div class="small intro">Change the Owner Forecast Category and Next Step on the opportunity.</div>
+        </template>
+        <button type="button" class={btnClass} onclick={handleOpen} disabled={disabled}>Update Forecast Category</button>
+    </div>
+</template>

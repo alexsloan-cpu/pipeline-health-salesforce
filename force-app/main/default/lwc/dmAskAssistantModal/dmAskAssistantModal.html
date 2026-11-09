@@ -1,0 +1,24 @@
+<template>
+    <lightning-modal-header label="✨ Ask Deal Assistant"></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="intro">A {typeLabel} overview prompt for this deal, filled in from the record. Run it with the Deal Assistant skill in Slackbot.</div>
+        <ol class="steps">
+            <li>Click <strong>Copy prompt</strong>.</li>
+            <li>Click <strong>Open Deal Assistant in Slack</strong>. The skill opens in Slackbot.</li>
+            <li>Paste the prompt into the Slackbot message box and send it.</li>
+        </ol>
+        <div class="lbl">Prompt</div>
+        <div class="prompt" lwc:ref="prompt" tabindex="0">{prompt}</div>
+        <template lwc:if={copied}>
+            <div class="ok">Copied. Paste it into Slackbot.</div>
+        </template>
+        <template lwc:if={copyFailed}>
+            <div class="err">Could not copy automatically. The prompt is selected: press Ctrl+C (Cmd+C on Mac).</div>
+        </template>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="Close" onclick={handleClose}></lightning-button>
+        <lightning-button class="gap" label="Open Deal Assistant in Slack" icon-name="utility:new_window" onclick={handleOpenSlack}></lightning-button>
+        <lightning-button class="gap" variant="brand" label={copyLabel} icon-name="utility:copy" onclick={handleCopy}></lightning-button>
+    </lightning-modal-footer>
+</template>

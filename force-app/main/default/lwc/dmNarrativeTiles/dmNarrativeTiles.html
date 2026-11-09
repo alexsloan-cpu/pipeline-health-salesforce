@@ -1,0 +1,159 @@
+<template>
+    <template lwc:if={hasRecord}>
+        <div class="wrap">
+            <template lwc:if={hasOverview}>
+                <section class="tile">
+                    <h2 class="head brh">
+                        <button type="button" class="brhead" onclick={toggleOverview} aria-expanded={ovAria}>
+                            <span class="brchev">{ovChevron}</span>
+                            <span class="ttl">Health Overview</span>
+                            <span class="ai">AI</span>
+                            <span class="grow"></span>
+                            <template lwc:if={ovVerdict}>
+                                <span class="verdict">{ovVerdict}</span>
+                            </template>
+                        </button>
+                    </h2>
+                    <template lwc:if={ovOpen}>
+                        <template lwc:if={ovSummary}>
+                            <p class="lead">{ovSummary}</p>
+                        </template>
+                        <template lwc:if={ovStructured}>
+                            <div class="cols">
+                                <div class="box">
+                                    <h3 class="lab">Critical gaps</h3>
+                                    <ul class="list">
+                                        <template for:each={ovGaps} for:item="g">
+                                            <li key={g.key} class="gap"><span class="bang">!</span><span>{g.text}</span></li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div class="box wide">
+                                    <h3 class="lab">What the rep should do now</h3>
+                                    <ol class="list">
+                                        <template for:each={ovActions} for:item="a">
+                                            <li key={a.key} class="act"><span class="num">{a.n}</span><span>{a.text}</span></li>
+                                        </template>
+                                    </ol>
+                                    <template lwc:if={canToggle}>
+                                        <button type="button" class="link" onclick={toggleActions}>{toggleLabel}</button>
+                                    </template>
+                                </div>
+                                <div class="box">
+                                    <c-dm-timing-tile record-id={recordId}></c-dm-timing-tile>
+                                </div>
+                            </div>
+                        </template>
+                        <template lwc:if={ovNeeded}>
+                            <div class="foot"><span class="lab">Needed before progressing</span><span>{ovNeeded}</span></div>
+                        </template>
+                    </template>
+                </section>
+            </template>
+
+            <template lwc:if={showBigRocks}>
+                <section class="tile">
+                    <h2 class="head brh">
+                        <button type="button" class="brhead" onclick={toggleBigRocks} aria-expanded={brAria}>
+                            <span class="brchev">{brChevron}</span>
+                            <span class="ttl">Big Rocks</span>
+                            <span class="ai">AI</span>
+                            <span class="grow"></span>
+                            <span class="brcount">{brCount}</span>
+                        </button>
+                    </h2>
+                    <template lwc:if={brOpen}>
+                        <ul class="list brlist">
+                            <template for:each={bigRocks} for:item="r">
+                                <li key={r.key} class="br">
+                                    <span class="brnum">{r.n}</span>
+                                    <div class="brbody">
+                                        <span class="brtitle">{r.title}</span>
+                                        <span class="brtext">{r.text}</span>
+                                    </div>
+                                    <span class={r.pillClass}>{r.pillText}</span>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </section>
+            </template>
+
+            <div class={rowClass}>
+                <section class="tile half">
+                    <div class="head">
+                        <h2 class="ttl">Close Health Score</h2>
+                        <span class="ai">AI</span>
+                    </div>
+                    <div class="scorebox">
+                        <template lwc:if={hasScore}>
+                            <span class={scoreClass}>{scoreText}</span>
+                            <span class="bar"><span class={fillClass} style={fillStyle}></span></span>
+                        </template>
+                        <template lwc:else>
+                            <span class="empty" style="margin:0;font-style:normal;font-weight:600">Not yet scored</span>
+                            <span class="bar"></span>
+                        </template>
+                    </div>
+                    <template lwc:if={noReasonText}>
+                        <p class="empty">{reasonEmptyText}</p>
+                    </template>
+                    <template lwc:if={reasonSummary}>
+                        <p class="lead">{reasonSummary}</p>
+                    </template>
+                    <div class="duo">
+                        <template lwc:if={hasPros}>
+                            <div class="pc pro">
+                                <h3 class="lab good">Working for the deal</h3>
+                                <ul class="bul">
+                                    <template for:each={pros} for:item="p"><li key={p.key}>{p.text}</li></template>
+                                </ul>
+                            </div>
+                        </template>
+                        <template lwc:if={hasCons}>
+                            <div class="pc con">
+                                <h3 class="lab bad">Working against it</h3>
+                                <ul class="bul">
+                                    <template for:each={cons} for:item="c"><li key={c.key}>{c.text}</li></template>
+                                </ul>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+                <section class="tile half riskTile">
+                    <div class="head">
+                        <h2 class="ttl">Risks</h2>
+                        <template lwc:if={hasSignal}>
+                            <span class={signalClass}>{signal}</span>
+                        </template>
+                    </div>
+                    <template lwc:if={noRiskText}>
+                        <p class="empty">No risks</p>
+                    </template>
+                    <ul class="list">
+                        <template for:each={riskItems} for:item="r">
+                            <li key={r.key} class="risk">
+                                <span class="lab bad">{r.label}</span>
+                                <template for:each={r.lines} for:item="l">
+                                    <span key={l.key} class="risk-line">{l.text}</span>
+                                </template>
+                            </li>
+                        </template>
+                    </ul>
+                    <template lwc:if={riskBottom}>
+                        <div class="foot"><strong>Bottom line:</strong><span>{riskBottom}</span></div>
+                    </template>
+                </section>
+                <template lwc:if={timingAsTile}>
+                    <section class="tile half">
+                        <div class="head">
+                            <h2 class="ttl">Timing</h2>
+                            <span class="ai">AI</span>
+                        </div>
+                        <c-dm-timing-tile record-id={recordId} hide-title></c-dm-timing-tile>
+                    </section>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

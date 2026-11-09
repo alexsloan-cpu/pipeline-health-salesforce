@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Ask Deal Assistant</masterLabel>
+    <description>Ask Deal Assistant button. Builds the record type prompt and opens it. Used in the Enhanced header strip and on the Standard tab.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="layout" type="String" default="newBusiness" label="Layout (newBusiness, organicGrowth, newProduct, renewal or auto)"/>
+            <property name="variant" type="String" default="button" label="Variant (button or link)"/>
+            <objects>
+                <object>Deal_Milestones__c</object>
+            </objects>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

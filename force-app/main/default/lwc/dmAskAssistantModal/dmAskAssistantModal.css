@@ -1,0 +1,53 @@
+.intro {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.steps {
+    font-size: 13px;
+    margin: 0 0 12px 20px;
+    list-style: decimal;
+}
+.steps li {
+    margin-bottom: 2px;
+}
+.lbl {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #5c5c5c;
+    margin-bottom: 4px;
+}
+.prompt {
+    width: 100%;
+    max-height: 360px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.45;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    padding: 10px;
+    background: #fafaf9;
+    color: #181818;
+    user-select: text;
+}
+.ok {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #2e844a;
+}
+.err {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #ba0517;
+}
+.note {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #5c5c5c;
+}
+.gap {
+    margin-left: 8px;
+}

@@ -1,0 +1,17 @@
+.hint {
+    font-size: 12px;
+    background: #f3f2f2;
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin-bottom: 12px;
+}
+
+.err {
+    color: #ba0517;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.save {
+    margin-left: 8px;
+}

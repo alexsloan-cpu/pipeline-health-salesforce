@@ -1,0 +1,171 @@
+:host {
+    display: block;
+    container-type: inline-size;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+    padding: 16px;
+    color: #181818;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.meta {
+    font-size: 11px;
+    color: #5c5c5c;
+}
+
+.group {
+    border: 1px solid #dddbda;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.ghead {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3f3f3;
+    border: 0;
+    padding: 8px 12px;
+    font: inherit;
+    font-weight: 600;
+    color: #181818;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ghead-current {
+    background: #eaf2fb;
+    box-shadow: inset 3px 0 0 #0b5cab;
+}
+
+.gsummary {
+    font-weight: 400;
+    color: #5c5c5c;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.gtoggle {
+    font-weight: 400;
+    font-size: 12px;
+    color: #0b5cab;
+}
+
+.overview {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #444444;
+    font-style: italic;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cols,
+.row {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 0.5fr 2.2fr;
+    gap: 8px;
+    padding: 8px 12px;
+    align-items: start;
+}
+
+.cols {
+    font-size: 11px;
+    color: #5c5c5c;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.row {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.row:last-child {
+    border-bottom: 0;
+}
+
+.mname {
+    font-weight: 600;
+}
+
+.mscore {
+    font-variant-numeric: tabular-nums;
+}
+
+.mreason {
+    color: #444444;
+}
+
+.muted {
+    color: #8a8a8a;
+}
+
+.empty {
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #5c5c5c;
+}
+
+.pill {
+    display: inline-block;
+    font-size: 11px;
+    border-radius: 10px;
+    padding: 2px 8px;
+    white-space: nowrap;
+}
+
+.pill-good {
+    background: #e3f3e8;
+    color: #1e6b3a;
+}
+
+.pill-warn {
+    background: #fdefd6;
+    color: #7a4a00;
+}
+
+.pill-bad {
+    background: #fbe3e3;
+    color: #8e0b1b;
+}
+
+.pill-info {
+    background: #e3eefa;
+    color: #0b4a8f;
+}
+
+.pill-none {
+    background: #eeeeee;
+    color: #5c5c5c;
+}
+
+@container (max-width: 560px) {
+    .cols {
+        display: none;
+    }
+
+    .row {
+        grid-template-columns: 1fr auto;
+    }
+
+    .mreason {
+        grid-column: 1 / -1;
+    }
+}

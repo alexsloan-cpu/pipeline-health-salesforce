@@ -1,0 +1,49 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <strong>Partner Overlap</strong>
+            <span class="sub">From Crossbeam, account level. Customers and open opportunities only.</span>
+        </div>
+        <div class="opp">
+            <div class="l">Partners Tagged on This Opportunity</div>
+            <template lwc:if={hasChips}>
+                <div class="chips">
+                    <template for:each={chips} for:item="c"><span key={c.key} class={c.cls}><b>{c.kind}</b> {c.name}</span></template>
+                </div>
+                <template lwc:if={managers}><div class="sub">{managers}</div></template>
+            </template>
+            <template lwc:else><div class="sub">None tagged. Nothing in Partner Sourced or Partner Assist.</div></template>
+        </div>
+        <template lwc:if={loaded}>
+            <template lwc:if={hasRows}>
+                <div class="sum"><span><b>{totalText}</b></span><span><b>{openCount}</b> where the account is an open opportunity</span><span><b>{customerCount}</b> where the account is a customer</span></div>
+                <div class="wrap">
+                    <table>
+                        <thead><tr><th>Partner</th><th>Account is their</th><th>Partner rep</th><th>On this opp</th><th>Last change</th></tr></thead>
+                        <tbody>
+                            <template for:each={rows} for:item="r">
+                                <tr key={r.key}>
+                                    <td><b>{r.name}</b><template lwc:if={r.type}><div class="sub">{r.type}</div></template></td>
+                                    <td>
+                                        <template lwc:if={r.openOpp}><span class="tag warn">Open opportunity</span></template>
+                                        <template lwc:if={r.customer}><span class="tag good">Customer</span></template>
+                                    </td>
+                                    <td>
+                                        <template lwc:if={r.rep}>{r.rep}<template lwc:if={r.repTitle}><div class="sub">{r.repTitle}</div></template></template>
+                                        <template lwc:else><span class="sub">Not shared</span></template>
+                                    </td>
+                                    <td>
+                                        <template lwc:if={r.tagged}><span class={r.tagCls}><b>{r.tagText}</b></span></template>
+                                        <template lwc:else><span class="sub">No</span></template>
+                                    </td>
+                                    <td class="d">{r.changed}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+            <template lwc:else><div class="empty">No Crossbeam partner has this account as a customer or open opportunity.</div></template>
+        </template>
+    </div>
+</template>

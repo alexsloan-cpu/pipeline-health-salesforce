@@ -1,0 +1,32 @@
+<template>
+    <template lwc:if={showTitle}>
+        <h3 class="lab">Will it close on time?</h3>
+    </template>
+    <template lwc:if={scored}>
+        <div class="top">
+            <template lwc:if={hasHealth}><span class={healthClass}>{healthText}</span></template>
+            <span class="sub">Timing Health<br />{onTrackText}</span>
+        </div>
+        <template for:each={rows} for:item="r">
+            <details key={r.key} class="sig">
+                <summary class="row">
+                    <span class="name">{r.label}</span>
+                    <span class="bars">
+                        <template for:each={r.bars} for:item="b"><i key={b.key} class={b.cls}></i></template>
+                    </span>
+                    <span class={r.verdictClass}>{r.verdict}</span>
+                </summary>
+                <div class="detail">{r.detail}</div>
+            </details>
+        </template>
+        <template lwc:if={summary}>
+            <details class="sig">
+                <summary class="row one"><span class="more">Timing Summary</span></summary>
+                <div class="detail">{summary}</div>
+            </details>
+        </template>
+    </template>
+    <template lwc:else>
+        <p class="muted">Not scored yet.</p>
+    </template>
+</template>

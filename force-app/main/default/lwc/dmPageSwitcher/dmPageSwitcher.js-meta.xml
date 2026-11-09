@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>PH Page Switcher</masterLabel>
+    <description>Deal Health: dropdown that opens this record in the other app, switching between the Views page and the classic page.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="currentView" label="This page is" type="String" datasource="new,classic" default="new"/>
+            <property name="targetApp" label="App to switch to (e.g. c__PH_Classic)" type="String" default=""/>
+            <property name="newLabel" label="Label for the Views page" type="String" default="Deal Health view"/>
+            <property name="classicLabel" label="Label for the original layout page" type="String" default="Original layout"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

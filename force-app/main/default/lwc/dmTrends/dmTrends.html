@@ -1,0 +1,87 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">Trends Over Time</div>
+            <div class="meta">{metaText}</div>
+        </div>
+        <template lwc:if={hasData}>
+            <div class="chips">
+                <template for:each={chips} for:item="c">
+                    <button key={c.key} type="button" class={c.chipClass} data-key={c.key} aria-expanded={c.expanded} onclick={handleToggle}>
+                        <span class="chip-label"><span class="swatch" style={c.swatch}></span>{c.label}</span>
+                        <span class="chip-value">{c.value}</span>
+                        <span class={c.textClass}>{c.text}</span>
+                        <span class="chip-hint">{c.hint}</span>
+                    </button>
+                </template>
+            </div>
+            <template lwc:if={detail}>
+                <div class="detail" role="region" aria-label={detail.title}>
+                    <div class="dhead">
+                        <div>
+                            <div class="dtitle">{detail.title}</div>
+                            <div class="dabout">{detail.about}</div>
+                        </div>
+                        <button type="button" class="close" onclick={handleClose}>Close</button>
+                    </div>
+                    <div class="kv">
+                        <template for:each={detail.rows} for:item="x">
+                            <div key={x.key} class="kvrow">
+                                <div class="k">{x.label}</div>
+                                <div class="v">{x.value}</div>
+                            </div>
+                        </template>
+                    </div>
+                    <template lwc:if={detail.hasBlocks}>
+                        <template for:each={detail.blocks} for:item="b">
+                            <div key={b.key} class="blk">
+                                <div class="sub-title">{b.label}</div>
+                                <div class="blk-text">{b.text}</div>
+                            </div>
+                        </template>
+                    </template>
+                    <div class="sub-title">Score history (latest first)</div>
+                    <div class="tbl">
+                        <template for:each={detail.table} for:item="t">
+                            <div key={t.key} class="trow">
+                                <div class="td-date">{t.date}</div>
+                                <div class="td-val">{t.value}</div>
+                                <div class={t.changeClass}>{t.change}</div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <svg class="chart" viewBox={viewBox} role="img" aria-label="Close Health Score and Key Milestone Completion over time">
+                <template for:each={model.grid} for:item="g">
+                    <g key={g.key}>
+                        <line x1={g.x1} x2={g.x2} y1={g.y} y2={g.y} class="gridline"></line>
+                        <text x={g.xText} y={g.yText} text-anchor="end" class="axis">{g.label}</text>
+                    </g>
+                </template>
+                <template for:each={model.ticks} for:item="t">
+                    <text key={t.key} x={t.x} y={t.yText} text-anchor="middle" class="axis">{t.label}</text>
+                </template>
+                <template for:each={model.series} for:item="s">
+                    <g key={s.id}>
+                        <template lwc:if={s.hasLine}>
+                            <polyline points={s.poly} fill="none" stroke={s.color} stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+                        </template>
+                        <template for:each={s.points} for:item="p">
+                            <circle key={p.key} cx={p.x} cy={p.y} r="3" fill={s.color} stroke="#ffffff" stroke-width="1.5">
+                                <title>{p.tip}</title>
+                            </circle>
+                        </template>
+                    </g>
+                </template>
+            </svg>
+            <template lwc:if={hasNote}>
+                <div class="note">{singlePointNote}</div>
+            </template>
+            <div class="note">0 to 100 scale. Hover a point for the exact value. Source: field history and Deal Health Snapshots. Key Milestone history starts Oct 19, 2026.</div>
+        </template>
+        <template lwc:else>
+            <div class="note">{emptyText}</div>
+        </template>
+    </div>
+</template>

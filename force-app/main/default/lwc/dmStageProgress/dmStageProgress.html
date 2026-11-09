@@ -1,0 +1,38 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">Key Milestone Completion</div>
+            <div class="meta">{meta}</div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <div class="row-inline score-line">
+                <span class="big">{scoreText}</span>
+                <span class="meta">Key Milestone Completion</span>
+            </div>
+            <div class="bars">
+                <template for:each={rows} for:item="r">
+                    <div key={r.key} class="bar-row">
+                        <span class={r.labelClass}>{r.name}</span>
+                        <div class="bar"><span class={r.fillClass} style={r.barStyle}></span></div>
+                        <span class={r.labelClass}>{r.count}</span>
+                    </div>
+                </template>
+            </div>
+            <div class="meta foot">{foot}</div>
+            <template lwc:if={hasSkipped}>
+                <div class="flag">
+                    <span aria-hidden="true">!</span>
+                    <div>
+                        <template for:each={skipped} for:item="s">
+                            <div key={s.key}>{s.text}</div>
+                        </template>
+                        <div class="small">The deal advanced without them.</div>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

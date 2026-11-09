@@ -1,0 +1,30 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">Next best actions<span class="ai-tag">AI</span></div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <template lwc:if={hasOwnerStep}>
+                <div class="label">Owner next step</div>
+                <div class="small intro">{ownerStep} <span class="muted">{ownerStepDate}</span></div>
+            </template>
+            <template lwc:if={hasActions}>
+                <template for:each={actions} for:item="a">
+                    <div key={a.key} class={a.cls}>
+                        <span class="num">{a.num}</span>
+                        <div>
+                            <div class="strong">{a.title}</div>
+                            <div class="small">{a.why}</div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template lwc:else>
+                <div class="small">Nothing open in the current stage.</div>
+            </template>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

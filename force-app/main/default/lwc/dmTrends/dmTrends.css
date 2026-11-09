@@ -1,0 +1,229 @@
+:host {
+    display: block;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #181818;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.meta,
+.note {
+    font-size: 11px;
+    color: #5c5c5c;
+}
+
+.note {
+    margin-top: 8px;
+}
+
+.chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.chip {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: #ffffff;
+    cursor: pointer;
+    border: 1px solid #dddbda;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+.chip-label {
+    font-size: 11px;
+    color: #5c5c5c;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+.chip-value {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.chip-text {
+    font-size: 12px;
+    color: #444444;
+}
+
+.chip-up {
+    color: #1e6b3a;
+}
+
+.chip-down {
+    color: #8e0b1b;
+}
+
+.chart {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    display: block;
+}
+
+.gridline {
+    stroke: #d8d8d8;
+    stroke-width: 1;
+}
+
+.axis {
+    font-size: 11px;
+    fill: #444444;
+}
+
+.chip:hover {
+    background: #f7f9fb;
+}
+
+.chip:focus-visible {
+    outline: 2px solid #0b5cab;
+    outline-offset: 2px;
+}
+
+.chip-open {
+    background: #f3f7fc;
+    box-shadow: 0 0 0 1px #0b5cab inset;
+}
+
+.chip-label,
+.chip-value,
+.chip-text,
+.chip-hint {
+    display: block;
+}
+
+.chip-label {
+    display: flex;
+}
+
+.chip-hint {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #0b5cab;
+}
+
+.detail {
+    margin-bottom: 10px;
+    border: 1px solid #dddbda;
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: #fafafa;
+}
+
+.dhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.dtitle {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.dabout {
+    font-size: 12px;
+    color: #5c5c5c;
+    margin-top: 2px;
+}
+
+.close {
+    border: 1px solid #c9c9c9;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.kv {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 6px 16px;
+}
+
+.k {
+    font-size: 11px;
+    color: #5c5c5c;
+}
+
+.v {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sub-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: #444444;
+    margin: 12px 0 4px;
+}
+
+.blk-text {
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+}
+
+.trow {
+    display: grid;
+    grid-template-columns: 1fr 70px 110px;
+    gap: 8px;
+    font-size: 12px;
+    padding: 3px 0;
+    border-top: 1px solid #ececec;
+}
+
+.td-val {
+    font-weight: 600;
+}
+
+.td-up {
+    color: #1e6b3a;
+}
+
+.td-down {
+    color: #8e0b1b;
+}
+
+.td-flat {
+    color: #5c5c5c;
+}

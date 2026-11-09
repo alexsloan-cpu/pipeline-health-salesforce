@@ -1,0 +1,81 @@
+<template>
+    <div class="card">
+        <div class="head">
+            <div class="title">{title}</div>
+            <div class="meta">{totals}</div>
+        </div>
+        <template lwc:if={hasRecord}>
+            <template lwc:if={isBoard}>
+                <div class="lanes">
+                    <template for:each={stages} for:item="s">
+                        <div key={s.key} class={s.laneClass}>
+                            <div class="lane-head">
+                                <span class="strong">{s.laneTitle}</span>
+                                <span class={s.countClass}>{s.countText}</span>
+                            </div>
+                            <template lwc:if={s.hasItems}>
+                                <template for:each={s.items} for:item="x">
+                                    <div key={x.key} class="chip-wrap">
+                                        <button type="button" class="chip" data-key={x.key} aria-expanded={x.chipAria} onclick={handleChip}>
+                                            <span class="chip-name">{x.label}</span>
+                                            <span class={x.pillClass}>{x.shortScore}</span>
+                                        </button>
+                                        <template lwc:if={x.showReason}>
+                                            <div class="chip-reason">
+                                                <template lwc:if={x.hasReason}>{x.reason}</template>
+                                                <template lwc:else><span class="muted">No reason recorded</span></template>
+                                                <template lwc:if={x.hasHint}><div class="hint">{x.hint}</div></template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </template>
+                            <template lwc:else>
+                                <div class="muted small">No scored milestones at this stage</div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="meta foot">Click a milestone to see its scoring reason. Complete means full marks (3 of 3). Scores of 1 or 2 show as in progress. The number after the plus sign counts in progress milestones.</div>
+            </template>
+            <template lwc:else>
+                <template for:each={stages} for:item="s">
+                    <div key={s.key} class="group">
+                        <button type="button" class={s.headClass} data-key={s.key} aria-expanded={s.ariaExpanded} onclick={handleToggle}>
+                            <span class="gtitle">{s.title}<span class="gsummary">{s.summary}</span></span>
+                            <span class="gtoggle">{s.toggleText}</span>
+                        </button>
+                        <template lwc:if={s.open}>
+                            <template lwc:if={s.hasItems}>
+                                <div class="cols">
+                                    <div>Milestone</div>
+                                    <div>Status</div>
+                                    <div>Score</div>
+                                    <div>Reason</div>
+                                </div>
+                                <template for:each={s.items} for:item="x">
+                                    <div key={x.key} class="row">
+                                        <div class="strong">{x.label}</div>
+                                        <div><span class={x.pillClass}>{x.pillText}</span></div>
+                                        <div>{x.scoreText}</div>
+                                        <div class="reason">
+                                            <template lwc:if={x.hasReason}>{x.reason}</template>
+                                            <template lwc:else><span class="muted">No reason recorded</span></template>
+                                            <template lwc:if={x.hasHint}><div class="hint">{x.hint}</div></template>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
+                            <template lwc:else>
+                                <div class="empty">No scored milestones at this stage.</div>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+            </template>
+        </template>
+        <template lwc:else>
+            <div class="meta">Loading</div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,22 @@
+<template>
+    <template lwc:if={hasStages}>
+        <div class="card">
+            <div class="head">
+                <div class="title">Stage progress</div>
+                <div class="meta">The current stage is outlined.</div>
+            </div>
+            <div class="grid">
+                <template for:each={stages} for:item="s">
+                    <div key={s.key} class={s.boxClass}>
+                        <div class="row">
+                            <span class="name">{s.name}</span>
+                            <span class="health">{s.health}</span>
+                        </div>
+                        <div class="count">{s.count}</div>
+                        <div class="bar"><div class={s.fillClass} style={s.barStyle}></div></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>
