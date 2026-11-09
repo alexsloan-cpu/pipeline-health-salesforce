@@ -42,7 +42,7 @@ export default class DmAskAssistant extends LightningElement {
     @api recordId;
     @api layout = 'newBusiness';
     @api variant = 'link';
-    // Page level use (Command Center, Pipeline Pod): a ready made prompt instead of a record prompt.
+    // Page level use (Command Center): a ready made prompt instead of a record prompt.
     @api customPrompt;
     @api customLabel;
     record;
