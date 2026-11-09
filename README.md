@@ -60,3 +60,14 @@ sf project deploy validate --manifest destructive/package.xml --post-destructive
 ```
 
 Never quick deploy this without Alex's explicit approval. Live users lose these pages and permissions on deploy.
+
+## Removal sequence (validate only until approved)
+
+Stage A: remove dmPageSwitcher from the 4 standard Deal Milestone record pages.
+```
+sf project deploy validate --manifest manifest/stageA-pages.xml --target-org iterable-prod --test-level RunRelevantTests
+```
+Stage B: delete the Pipeline Health tab first (pre-destructive), then everything else (post-destructive). Run only after Stage A is deployed and permission sets are unassigned.
+```
+sf project deploy validate --manifest destructive/package.xml --pre-destructive-changes destructive/preDestructiveChanges.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunRelevantTests
+```

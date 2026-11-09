@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Midterm_Increase_Usage</members>
+        <members>New_Business_Deal_Milestones</members>
+        <members>Renewal_Deal_Milestones</members>
+        <members>midterm_additional_product</members>
+        <name>FlexiPage</name>
+    </types>
+    <version>68.0</version>
+</Package>
