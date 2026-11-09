@@ -35,3 +35,14 @@ Deploy order: objects and fields, permission sets, Apex, LWC, FlexiPages, Flows 
 
 Active: PH_Calc_Health, PH_Notify_Fault, PH_Momentum_Update_Stamps, Deal_Milestone_Update_Checkbox_to_FALSE, Deal_Milestone_After_Save_Related_Opp_Update.
 Inactive: Deal_Milestones_S, Deal_Milestone_Tag_Prior_Health_Score, Deal_Milestone_Tag_Close_Score_Pre_Close.
+
+## Removing Pipeline Pod from production
+
+Pipeline Pod will not be implemented. These four Apex classes still exist in prod and need a destructive deploy. Validate first, then get explicit approval before the quick deploy.
+
+```
+sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunLocalTests
+sf project deploy quick --job-id <jobId> --target-org iterable-prod
+```
+
+If validate reports a dependency on one of these classes, fix that reference first.
