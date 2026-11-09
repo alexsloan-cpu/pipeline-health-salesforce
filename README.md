@@ -48,3 +48,15 @@ Inactive: Deal_Milestones_S, Deal_Milestone_Tag_Prior_Health_Score, Deal_Milesto
 Pipeline Pod is not being implemented and is already gone from prod. The destructive validate returned "No ApexClass named ... found" for all four pod classes.
 
 Also no longer in prod as of today: PhCommandCenterController, PhDashboardAction, PhDashboardApi, PhForecastCallController, PhForecastSnapshotJob, PhUsageController (and their tests), plus the PH_Forecast_Snapshot__c and Account_Usage__c objects. They are removed from `manifest/package.xml` so retrieve and deploy match prod. If the artifacts still need any of them, they are net-new builds.
+
+## Remove the early build from production (validate only until approved)
+
+The artifacts are the source of truth until go-live. Nothing from this build should be live in prod, but an earlier version is. `destructive/destructiveChanges.xml` removes the 10 Apex classes, 28 LWC, 7 FlexiPages, 8 flows and 5 permission sets. It does NOT touch the Deal_Milestones__c or Pipeline_Health_Snapshot__c objects or their records.
+
+Before this can pass: deactivate the active flows, unassign the PH_* permission sets (271 users on PH_Classic, 49 on PH_User, 33 on PH_Admin), and remove the FlexiPages as active record page overrides. Validate will list anything still blocking.
+
+```
+sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level NoTestRun
+```
+
+Never quick deploy this without Alex's explicit approval. Live users lose these pages and permissions on deploy.
