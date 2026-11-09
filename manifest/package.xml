@@ -29,10 +29,6 @@
         <members>PhForecastSnapshotJobTest</members>
         <members>PhPartnerOverlapController</members>
         <members>PhPartnerOverlapControllerTest</members>
-        <members>PhPipelinePodController</members>
-        <members>PhPipelinePodControllerTest</members>
-        <members>PhPodGoalCalculator</members>
-        <members>PhPodGoalCalculatorTest</members>
         <members>PhScoreHistoryController</members>
         <members>PhScoreHistoryControllerTest</members>
         <members>PhUsageController</members>
