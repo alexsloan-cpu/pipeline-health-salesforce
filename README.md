@@ -36,13 +36,8 @@ Deploy order: objects and fields, permission sets, Apex, LWC, FlexiPages, Flows 
 Active: PH_Calc_Health, PH_Notify_Fault, PH_Momentum_Update_Stamps, Deal_Milestone_Update_Checkbox_to_FALSE, Deal_Milestone_After_Save_Related_Opp_Update.
 Inactive: Deal_Milestones_S, Deal_Milestone_Tag_Prior_Health_Score, Deal_Milestone_Tag_Close_Score_Pre_Close.
 
-## Removing Pipeline Pod from production
+## Production state (checked 2026-11-09)
 
-Pipeline Pod will not be implemented. These four Apex classes still exist in prod and need a destructive deploy. Validate first, then get explicit approval before the quick deploy.
+Pipeline Pod is not being implemented and is already gone from prod. The destructive validate returned "No ApexClass named ... found" for all four pod classes.
 
-```
-sf project deploy validate --manifest destructive/package.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunLocalTests
-sf project deploy quick --job-id <jobId> --target-org iterable-prod
-```
-
-If validate reports a dependency on one of these classes, fix that reference first.
+Also no longer in prod as of today: PhCommandCenterController, PhDashboardAction, PhDashboardApi, PhForecastCallController, PhForecastSnapshotJob, PhUsageController (and their tests), plus the PH_Forecast_Snapshot__c and Account_Usage__c objects. They are removed from `manifest/package.xml` so retrieve and deploy match prod. If the artifacts still need any of them, they are net-new builds.

@@ -3,8 +3,6 @@
     <types>
         <members>Deal_Milestones__c</members>
         <members>Pipeline_Health_Snapshot__c</members>
-        <members>PH_Forecast_Snapshot__c</members>
-        <members>Account_Usage__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -16,23 +14,12 @@
         <name>PermissionSet</name>
     </types>
     <types>
-        <members>PhCommandCenterController</members>
-        <members>PhCommandCenterControllerTest</members>
-        <members>PhDashboardAction</members>
-        <members>PhDashboardApi</members>
-        <members>PhDashboardApiTest</members>
         <members>PhDealSignals</members>
         <members>PhDealSignalsTest</members>
-        <members>PhForecastCallController</members>
-        <members>PhForecastCallControllerTest</members>
-        <members>PhForecastSnapshotJob</members>
-        <members>PhForecastSnapshotJobTest</members>
         <members>PhPartnerOverlapController</members>
         <members>PhPartnerOverlapControllerTest</members>
         <members>PhScoreHistoryController</members>
         <members>PhScoreHistoryControllerTest</members>
-        <members>PhUsageController</members>
-        <members>PhUsageControllerTest</members>
         <members>DmOppActivityController</members>
         <members>DmOppActivityControllerTest</members>
         <members>DmRollupController</members>
