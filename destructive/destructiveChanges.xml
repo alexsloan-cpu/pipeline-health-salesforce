@@ -56,9 +56,7 @@
     </types>
     <types>
         <members>PH_Calc_Health</members>
-        <members>PH_Notify_Fault</members>
         <members>PH_Momentum_Update_Stamps</members>
-        <members>Deal_Milestone_Update_Checkbox_to_FALSE</members>
         <members>Deal_Milestone_After_Save_Related_Opp_Update</members>
         <members>Deal_Milestones_S</members>
         <members>Deal_Milestone_Tag_Prior_Health_Score</members>
