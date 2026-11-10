@@ -4,12 +4,10 @@
     <description>Active AEs with no Cockpit Usage Day in the last 7 days. Add the pilot group to the role filter during the pilot.</description>
     <format>Tabular</format>
     <reportType>User</reportType>
-    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <columns><field>FULL_NAME</field></columns>
-    <columns><field>MANAGER</field></columns>
     <columns><field>ROLE</field></columns>
     <crossFilters>
         <criteriaItems>
