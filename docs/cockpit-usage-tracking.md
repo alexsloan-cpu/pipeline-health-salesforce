@@ -21,7 +21,7 @@ Event Monitoring is also licensed in the org (LightningPageView, LightningIntera
 | Views: My Number, Account Intel | BDR-only tabs |
 | Deal Health Records Opened | Deal Health records opened from the cockpit |
 | Actions Completed / Dismissed | Signals or actions marked done or acted on, and signals dismissed or snoozed |
-| Deal Updates Saved | Saves of stage, close date, forecast category, amount, next step or MEDDIC |
+| Deal Updates Saved | Saves of stage, close date, forecast category, amount, next step or MEDDPICC |
 | Emails Drafted, Assistant Questions, Account Lookups | One per use |
 | First Seen, Last Seen | First and last activity that day |
 | Took an Action (formula) | True when the seller did more than look |

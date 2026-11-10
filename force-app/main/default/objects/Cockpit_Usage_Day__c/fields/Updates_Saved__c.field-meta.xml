@@ -6,6 +6,6 @@
     <precision>7</precision>
     <scale>0</scale>
     <defaultValue>0</defaultValue>
-    <description>Saves of stage, close date, forecast category, amount, next step or MEDDIC from the cockpit.</description>
+    <description>Saves of stage, close date, forecast category, amount, next step or MEDDPICC from the cockpit.</description>
     <required>false</required>
 </CustomField>
