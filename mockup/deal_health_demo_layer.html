@@ -1,0 +1,120 @@
+<style>
+.dx-scrim{position:fixed;inset:0;background:rgba(8,7,7,.45);z-index:9000}
+.dx-mod{position:fixed;left:50%;top:6vh;transform:translateX(-50%);width:min(640px,calc(100% - 24px));max-height:86vh;overflow:auto;background:#fff;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.3);z-index:9001;font-size:13px;color:#181818}
+.dx-mod.wide{width:min(760px,calc(100% - 24px))}
+.dx-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #e5e5e5}.dx-h h2{margin:0;font-size:18px;font-weight:600;flex:1}
+.dx-x{border:0;background:none;font-size:20px;cursor:pointer;color:#5c5c5c}
+.dx-b{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.dx-f{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;border-top:1px solid #e5e5e5;background:#f3f3f3}
+.dx-btn{border:1px solid #c9c9c9;background:#fff;color:#0b5cab;border-radius:4px;padding:6px 14px;font:inherit;cursor:pointer}.dx-btn.p{background:#0b5cab;border-color:#0b5cab;color:#fff}.dx-btn.d{background:#ba0517;border-color:#ba0517;color:#fff}
+.dx-l{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:12px;color:#444}
+.dx-l select,.dx-l textarea,.dx-l input{font:inherit;font-size:13px;font-weight:400;border:1px solid #c9c9c9;border-radius:4px;padding:7px 9px;color:#181818}
+.dx-cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}.dx-cmp div{border:1px solid #e5e5e5;border-radius:6px;padding:10px}.dx-cmp b{display:block;font-size:16px;margin-top:4px}
+.dx-sub{color:#5c5c5c;font-size:12px}.dx-hint{background:#eaf2fb;border-radius:4px;padding:8px 10px}
+.dx-li{border-top:1px solid #eee;padding:8px 0}.dx-li:first-child{border-top:0}.dx-li b{display:block}
+.dx-q{display:flex;flex-wrap:wrap;gap:6px}.dx-q button{border:1px solid #c9c9c9;background:#fff;border-radius:16px;padding:4px 12px;font:inherit;font-size:12px;cursor:pointer;color:#0b5cab}.dx-q button[aria-pressed=true]{background:#0b5cab;color:#fff;border-color:#0b5cab}
+.dx-ans{white-space:pre-wrap;line-height:1.5;border:1px solid #e5e5e5;border-radius:6px;padding:12px;background:#fafaf9}
+.dx-toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:#2e844a;color:#fff;padding:10px 18px;border-radius:4px;z-index:9100;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.dx-badge{display:inline-block;margin-left:8px;font-size:11px;padding:2px 8px;border-radius:10px;background:#fef1ee;color:#8c4b02;vertical-align:middle}
+</style>
+<script>
+(function(){
+var SF='https://iterable.lightning.force.com/lightning/r/';
+function SFR(id,obj){return id?SF+(obj?obj+'/':'')+id+'/view':null}
+var OWN={'Adrian Wong':'005PU00000J2HrRYAV','Agim Cura':'005PU000000VieHYAS','Alexa Boland':'005PU00000K7VA1YAN','Andrew Bennett':'0051P000004UXf0QAG','Andrew Johnson':'005PU00000J2I17YAF','Elliot Gluck':'005PU00000JZpeDYAT','Fiachra McKiernan':'0051P000003yuVRQAY','Jacob Zavita':'005PU00000Ai3nfYAB','James McDonald':'005PU000009UMcEYAW','Jennifer Pham':'0051P000004UZxpQAG','John Knutson':'005PU00000Ndy8jYAB','Kamarin Monty':'005PU00000Lj6ehYAB','Kristin Kearney':'005PU000008CvXNYA0','Luis Cotto':'005PU000001EpgPYAS','Margie Hollister':'0051P000003XYqVQAW','Mark Miller':'005PU000009q6H3YAI','Marya Stevens':'005PU000000b5aEYAQ','Melissa Moffett':'005PU000000bAmnYAE','Mike Salvi':'005PU00000NeothYAB','Rachel Pryor':'005PU0000064PcIYAU','Robert Brewer':'005PU0000064TrBYAU','Sophie Bueckendorf':'005PU00000LjOlFYAV','Travis Turner':'005PU000008CwWfYAK','Brian Hamm':'0051a000002IdTfAAK','Sophie Parker':'005PU00000OXmfxYAD'};
+var ST={fc:{},req:{},del:{},snaps:{}};
+function R(){return typeof cur!=='undefined'?cur:null}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function phd(){try{return PH.data||{}}catch(e){return {}}}
+function fcRaw(r){return ((phd().recordTabs_fc)||{})[r.id]||{}}
+function curCat(r){if(ST.fc[r.id])return ST.fc[r.id];var o=fcRaw(r)._opp||{};return o.ForecastCategory__c||r.f.Forecast_Category__c||'Pipeline'}
+function score(r){var v=r.f.Close_Likelihood_Score__c;if(v==null)v=(fcRaw(r).Close_Likelihood_Score__c);return v==null?null:Math.round(+v)}
+function evid(p){if(p==null)return ['Pipeline','No Close Health score yet, so the evidence supports Pipeline.'];if(p>=70)return ['Commit',p+'% Close Health is 70% or higher, which supports Commit.'];if(p>=45)return ['Best Case',p+'% Close Health is 45 to 69%, which is Best Case territory.'];return ['Pipeline',p+'% Close Health is under 45%, which supports Pipeline.']}
+function toast(m){var t=document.createElement('div');t.className='dx-toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2600)}
+function close(){document.querySelectorAll('.dx-scrim,.dx-mod').forEach(function(e){e.remove()})}
+function modal(title,body,foot,wide){close();var s=document.createElement('div');s.className='dx-scrim';s.onclick=close;var m=document.createElement('div');m.className='dx-mod'+(wide?' wide':'');m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');
+ m.innerHTML='<div class="dx-h"><h2>'+esc(title)+'</h2><button class="dx-x" aria-label="Close" data-dx="close">×</button></div><div class="dx-b">'+body+'</div><div class="dx-f">'+(foot||'<button class="dx-btn" data-dx="close">Close</button>')+'</div>';
+ document.body.appendChild(s);document.body.appendChild(m);var f=m.querySelector('select,textarea,input,.dx-btn.p');if(f)f.focus();return m}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+function clip(t,n){t=String(t||'');return t.length>n?t.slice(0,n-1)+'…':t}
+function lowMilestones(r){var out=[];Object.keys(r.f).forEach(function(k){if(!/_Score__c$/.test(k)||/Close_Likelihood|Prior_Health|Health_Score/.test(k))return;var v=r.f[k];if(v==null||+v>1)return;var rk=k.replace(/_Score__c$/,'_Reason__c');if(/^Formula:/.test(r.f[rk]||''))return;var lab=k.replace(/__c$/,'').replace(/_Score$/,'').replace(/_S\d$/,'').replace(/_/g,' ').replace(/TechnicalFitScore/,'Technical fit');out.push([lab,+v,r.f[rk]||''])});return out.sort(function(a,b){return a[1]-b[1]}).slice(0,6)}
+function risks(r){return String(r.f.Current_Opportunity_Risks__c||'').split(/;\s*/).filter(Boolean)}
+/* All actions */
+function allActions(){var r=R();if(!r)return;var h='';
+ if(r.f.Suggested_Next_Step__c)h+='<div class="dx-li"><b>Suggested next step</b>'+esc(r.f.Suggested_Next_Step__c)+'</div>';
+ if(r.oppNextStep)h+='<div class="dx-li"><b>Opportunity next step</b>'+esc(r.oppNextStep)+'</div>';
+ var lm=lowMilestones(r);if(lm.length)h+='<div class="dx-li"><b>Close the milestone gaps</b>'+lm.map(function(x){return '<div style="margin-top:6px"><span class="dx-badge">'+x[1]+' pts</span> '+esc(x[0])+(x[2]?'<div class="dx-sub">'+esc(clip(x[2],220))+'</div>':'')+'</div>'}).join('')+'</div>';
+ var rk=risks(r);if(rk.length)h+='<div class="dx-li"><b>Risks to clear</b><ul style="margin:6px 0 0 18px;padding:0">'+rk.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>';
+ if(!h)h='<p>No open actions on this deal.</p>';
+ modal('All actions · '+r.accountName,h,'<button class="dx-btn" data-dx="close">Close</button><button class="dx-btn p" data-dx="tasks">Create tasks in Salesforce</button>',1)}
+/* Update forecast category */
+function fcModal(){var r=R();if(!r)return;var c=curCat(r),p=score(r),e=evid(p);
+ var opts=['Pipeline','Best Case','Commit','Omitted'].map(function(o){return '<option'+(o===e[0]?' selected':'')+'>'+o+'</option>'}).join('');
+ modal('Update Forecast Category','<div class="dx-cmp"><div><span class="dx-sub">Owner call today</span><b>'+esc(c)+'</b></div><div><span class="dx-sub">Evidence supports</span><b>'+esc(e[0])+'</b></div></div><div class="dx-hint">'+esc(e[1])+' Rule: 70%+ Close Health is Commit, 45 to 69% is Best Case, under 45% is Pipeline.</div><label class="dx-l">New forecast category<select id="dx_fc">'+opts+'</select></label><label class="dx-l">Reason for the change<textarea id="dx_fcr" rows="3" placeholder="Required when you move away from the evidence">'+(e[0]!==c?esc(e[1]):'')+'</textarea></label><div class="dx-sub">Saves to Forecast Category on '+esc(r.oppName)+' in Salesforce.</div>',
+ '<button class="dx-btn" data-dx="close">Cancel</button><button class="dx-btn p" data-dx="fcsave">Save</button>')}
+function fcSave(){var r=R(),v=document.getElementById('dx_fc').value,why=document.getElementById('dx_fcr').value.trim(),e=evid(score(r))[0];
+ if(v!==e&&!why){document.getElementById('dx_fcr').style.borderColor='#ba0517';document.getElementById('dx_fcr').placeholder='Add a reason: this call differs from the evidence';return}
+ var old=curCat(r);ST.fc[r.id]=v;var raw=fcRaw(r);if(raw._opp)raw._opp.ForecastCategory__c=v;close();try{render()}catch(x){}toast(old===v?'Forecast Category confirmed as '+v:'Forecast Category updated from '+old+' to '+v)}
+/* Deal assistant */
+var QS=[['risk','Biggest risk'],['path','Path to close'],['who','Who to bring in'],['email','Draft a follow-up email']];
+function answer(r,q){var f=r.f,ppl=((r.act||{}).people||[]);
+ if(q==='risk')return (f.Current_Opportunity_Risks__c||'No risks recorded on this deal.')+'\n\nClose Health: '+(score(r)==null?'not scored':score(r)+'%')+'. '+clip(f.Close_Likelihood_Reason__c||'',400);
+ if(q==='path'){var lm=lowMilestones(r);return (f.Suggested_Next_Step__c||r.oppNextStep||'No next step on the record.')+(lm.length?'\n\nOpen milestones, lowest first:\n'+lm.map(function(x){return '• '+x[0]+' ('+x[1]+' pts)'}).join('\n'):'')}
+ if(q==='who'){var ex=ppl.filter(function(p){return /Executive|Economic|Decision/i.test((p.persona||'')+' '+(p.tags||[]).join(' '))});var top=ppl.slice().sort(function(a,b){return (b.touches||0)-(a.touches||0)}).slice(0,4);
+  return 'Most engaged: '+(top.map(function(p){return p.name+(p.title?' ('+p.title+')':'')+', '+(p.touches||0)+' touches'}).join('; ')||'no contacts recorded')+'.\n\n'+(ex.length?'Executive coverage: '+ex.map(function(p){return p.name}).join(', ')+'.':'No executive sponsor or economic buyer is engaged. Ask your champion to introduce one before the next stage review.')}
+ var c=ppl.slice().sort(function(a,b){return (b.touches||0)-(a.touches||0)})[0];var first=c?c.name.split(' ')[0]:'there';
+ return 'Subject: Next steps for '+r.accountName+'\n\nHi '+first+',\n\nThanks for the time on our last call. To keep us on track for '+(f.Opportunity_Close_Date__c?(typeof fmtUS==='function'?fmtUS(f.Opportunity_Close_Date__c):f.Opportunity_Close_Date__c):'the close date')+', here is what I have as next steps:\n\n• '+clip(f.Suggested_Next_Step__c||r.oppNextStep||'Confirm the decision timeline and who signs',300)+'\n\nCould you confirm those work on your side, and let me know if anyone else should join the next conversation?\n\nBest,\n'+r.ownerName}
+function assistant(q){var r=R();if(!r)return;q=q||'risk';
+ var m=modal('✨ Deal Assistant · '+r.accountName,'<div class="dx-q">'+QS.map(function(x){return '<button data-dxq="'+x[0]+'" aria-pressed="'+(x[0]===q)+'">'+x[1]+'</button>'}).join('')+'</div><div class="dx-ans" id="dx_ans">'+esc(answer(r,q))+'</div><div class="dx-sub">Grounded in this Deal Health record: milestone scores, risks, Close Health reason and contact activity.</div>',
+ '<button class="dx-btn" data-dx="copy">Copy</button>'+(q==='email'?'<button class="dx-btn p" data-dx="outreach">Open in Outreach</button>':'<button class="dx-btn p" data-dx="close">Done</button>'),1)}
+/* Request health update, delete, new snapshot */
+function reqUpdate(){var r=R();modal('Request Health Update','<p>Rescore <b>'+esc(r.name)+'</b> from the latest Momentum calls, emails and opportunity fields. Scores and reasons refresh in about 2 minutes.</p><label class="dx-l">Note for the owner (optional)<textarea id="dx_rn" rows="2"></textarea></label>','<button class="dx-btn" data-dx="close">Cancel</button><button class="dx-btn p" data-dx="reqgo">Request update</button>')}
+function delRec(){var r=R();modal('Delete Deal Health','<p>Are you sure you want to delete this Deal Health record?</p><p class="dx-sub">'+esc(r.name)+'. Its snapshots stay on the opportunity.</p>','<button class="dx-btn" data-dx="close">Cancel</button><button class="dx-btn d" data-dx="delgo">Delete</button>')}
+function delGo(){var r=R();close();var sel=document.getElementById('recSel');var idx=D.records.indexOf(r);D.records.splice(idx,1);
+ if(sel){var o=sel.querySelector('option[value="'+r.id+'"]');if(o)o.remove()}toast('Deal Health "'+r.name+'" was deleted.');var nx=D.records[Math.min(idx,D.records.length-1)];if(nx)pick(nx.id)}
+function newSnap(){var r=R();modal('New Pipeline Health Snapshot','<div class="frow" style="display:flex;gap:10px;flex-wrap:wrap"><label class="dx-l" style="flex:1">Snapshot Type<select id="dx_st"><option>Manual</option><option>Weekly</option><option>Stage Change</option></select></label><label class="dx-l" style="flex:1">Snapshot Date<input id="dx_sd" type="date" value="2026-11-10"></label></div><label class="dx-l">Risk Reason<textarea id="dx_sr" rows="3">'+esc(clip(r.f.Current_Opportunity_Risks__c||'',240))+'</textarea></label><div class="dx-sub">Stage, Health Status and Close Likelihood are copied from the record.</div>','<button class="dx-btn" data-dx="close">Cancel</button><button class="dx-btn p" data-dx="snapgo">Save</button>')}
+function snapGo(){var r=R(),t=phd().recordTabs||{},d=t[r.id]||(t[r.id]={});d.snapshots=d.snapshots||[];var n=d.snapshots.length;
+ var name='PHS-'+(1000+Math.floor(Math.random()*8999));d.snapshots.push({Id:null,Name:name,Snapshot_Date__c:document.getElementById('dx_sd').value,Snapshot_Type__c:document.getElementById('dx_st').value,Stage__c:r.f.Opportunity_Stage__c,Health_Status__c:(d.snapshots[n-1]||{}).Health_Status__c||null,Status_Change__c:'New',Close_Likelihood_Score__c:score(r),Percent_Complete__c:(d.snapshots[n-1]||{}).Percent_Complete__c||null,Risk_Reason__c:document.getElementById('dx_sr').value});
+ close();try{render()}catch(x){}toast('Pipeline Health Snapshot "'+name+'" was created.')}
+/* Wire links on every render */
+function wire(){var r=R();if(!r)return;
+ document.querySelectorAll('.facts a').forEach(function(a){var lab=(a.parentElement.querySelector('.fl')||{}).textContent||'';var u=lab==='Account'?SFR(r.accountId||r.f.Account__c,'Account'):lab==='Opportunity'?SFR(r.f.Opportunity__c,'Opportunity'):lab==='Owner'?SFR(OWN[r.ownerName],'User'):null;if(u){a.href=u;a.target='_blank';a.rel='noopener';a.removeAttribute('onclick')}});
+ var ppl={};((r.act||{}).people||[]).forEach(function(p){ppl[p.name]=p.id});
+ document.querySelectorAll('a.oa-pn').forEach(function(a){var id=ppl[a.textContent.trim()];if(id){a.href=SFR(id,'Contact');a.target='_blank';a.rel='noopener'}});
+ var sn={};(((phd().recordTabs||{})[r.id]||{}).snapshots||[]).forEach(function(x){sn[x.Name]=x.Id});
+ document.querySelectorAll('.ct-tbl a').forEach(function(a){var id=sn[a.textContent.trim()];if(id){a.href=SF+id+'/view';a.target='_blank';a.rel='noopener';a.removeAttribute('onclick')}else if(a.textContent.trim().indexOf('PHS-')===0){a.removeAttribute('href')}});
+ document.querySelectorAll('.ct-link').forEach(function(a){if(/View All/.test(a.textContent)){a.href=SFR(r.id,'Deal_Milestones__c');a.target='_blank';a.removeAttribute('onclick')}});
+ document.querySelectorAll('.ct-panel a[href="#"]').forEach(function(a){var t=a.textContent.trim(),u=null;
+  if(/^https?:/.test(t))u=t;else if(/@/.test(t))u='mailto:'+t;else if(t===r.oppName||t===r.name&&r.f.Opportunity__c)u=SFR(r.f.Opportunity__c,'Opportunity');else if(t===r.accountName)u=SFR(r.accountId,'Account');else if(OWN[t])u=SFR(OWN[t],'User');else if(ppl[t])u=SFR(ppl[t],'Contact');else if(t===r.rtLabel){var sp=document.createElement('span');sp.textContent=t;a.replaceWith(sp);return}else u='https://iterable.lightning.force.com/one/one.app#/search?q='+encodeURIComponent(t);
+  a.href=u;a.removeAttribute('onclick');if(!/^mailto/.test(u)){a.target='_blank';a.rel='noopener'}});
+ var hb=document.querySelector('#recHdr .bg');if(hb&&ST.req[r.id]&&!hb.querySelector('.dx-badge')){var b=document.createElement('span');b.className='dx-badge';b.textContent='Health update requested '+ST.req[r.id];hb.prepend(b)}
+ if(hb&&!ST.req[r.id]){var ob=hb.querySelector('.dx-badge');if(ob)ob.remove()}
+ var pend=document.querySelector('.pending');if(pend&&/not in this mockup/.test(pend.textContent))pend.textContent='Nothing to show on this tab for this record.';
+}
+var pg=document.getElementById('page');if(pg)new MutationObserver(function(){wire()}).observe(pg,{childList:true,subtree:true});
+var t=document.getElementById('title');if(t)new MutationObserver(function(){wire()}).observe(t,{childList:true,characterData:true,subtree:true});
+document.addEventListener('click',function(e){
+ var d=e.target.closest('[data-dx],[data-dxq]');
+ if(d){e.preventDefault();var a=d.getAttribute('data-dx'),q=d.getAttribute('data-dxq');
+  if(q)return assistant(q);
+  if(a==='close')return close();
+  if(a==='fcsave')return fcSave();
+  if(a==='tasks'){close();return toast(lowMilestones(R()).length+risks(R()).length?'Tasks created in Salesforce for '+R().ownerName+', due Nov 13':'No actions to create')}
+  if(a==='copy'){var x=document.getElementById('dx_ans');try{navigator.clipboard.writeText(x.textContent)}catch(err){}return toast('Copied')}
+  if(a==='outreach'){close();return toast('Draft saved in Outreach for '+R().ownerName)}
+  if(a==='reqgo'){var r=R();ST.req[r.id]='Nov 10';close();wire();return toast('Health update requested for '+r.name)}
+  if(a==='delgo')return delGo();
+  if(a==='snapgo')return snapGo();
+  return}
+ var b=e.target.closest('button');if(!b)return;
+ if(b.closest('.nbs')){if(b.classList.contains('lnk')){e.stopPropagation();return allActions()}if(b.classList.contains('p')){e.stopPropagation();return assistant('risk')}if(b.classList.contains('btn')){e.stopPropagation();return fcModal()}}
+ if(b.classList.contains('fc-r-btn-primary')&&!b.disabled){e.stopPropagation();return fcModal()}
+ if(b.classList.contains('fc-r-ask')){e.stopPropagation();return assistant('path')}
+ if(b.classList.contains('ct-rl-btn')){e.stopPropagation();return newSnap()}
+ if(b.closest('#recHdr .bg')){if(/Request Health Update/.test(b.textContent))return reqUpdate();if(/Delete/.test(b.textContent))return delRec()}
+},true);
+var mk=document.querySelector('.mock[aria-label="Mockup controls"]');if(mk)mk.setAttribute('aria-label','Demo controls');
+var g=document.querySelector('.mock .grp');if(g&&!/Demo mode/.test(g.textContent))g.insertAdjacentHTML('beforeend',' Demo mode: actions update this page only.');
+wire();
+})();
+</script>
