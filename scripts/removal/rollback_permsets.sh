@@ -5,7 +5,7 @@ ORG="${SF_ORG_ALIAS:-iterable-prod}"
 python3 -I - <<'P'
 import csv
 r=list(csv.DictReader(open('backup/psa_snapshot.csv')))
-w=csv.writer(open('backup/psa_restore.csv','w'))
+w=csv.writer(open('backup/psa_restore.csv','w',newline=''),lineterminator='\n')
 w.writerow(['AssigneeId','PermissionSetId'])
 for x in r: w.writerow([x['AssigneeId'],x['PermissionSetId']])
 P
