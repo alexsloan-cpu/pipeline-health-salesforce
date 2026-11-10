@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Cockpit active sellers this week</name>
+    <description>Each seller who opened the cockpit this week: days used, page loads, active minutes and actions. Row count per seller is days used.</description>
+    <format>Summary</format>
+    <reportType>Cockpit_Usage_Days__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <columns><field>Cockpit_Usage_Day__c$Usage_Date__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Sessions__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Active_Minutes__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Actions_Completed__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Updates_Saved__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Records_Opened__c</field></columns>
+    <groupingsDown>
+        <dateGranularity>None</dateGranularity>
+        <field>Cockpit_Usage_Day__c$Manager_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>None</dateGranularity>
+        <field>Cockpit_Usage_Day__c$User__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <timeFrameFilter>
+        <dateColumn>Cockpit_Usage_Day__c$Usage_Date__c</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

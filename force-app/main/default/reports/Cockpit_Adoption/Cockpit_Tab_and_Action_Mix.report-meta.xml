@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <name>Cockpit tab and action mix, 30 days</name>
+    <description>Which tabs and actions sellers use, by manager. Shows whether the page is opened and closed, or worked.</description>
+    <format>Summary</format>
+    <reportType>Cockpit_Usage_Days__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Views_My_Day__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Views_Immediate_Actions__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Views_Pipeline_Forecast__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Views_Build_Pipeline__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Actions_Completed__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Actions_Dismissed__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Updates_Saved__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Emails_Drafted__c</field></columns>
+    <columns><aggregateTypes>Sum</aggregateTypes><field>Cockpit_Usage_Day__c$Assistant_Questions__c</field></columns>
+    <groupingsDown>
+        <dateGranularity>None</dateGranularity>
+        <field>Cockpit_Usage_Day__c$Manager_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <timeFrameFilter>
+        <dateColumn>Cockpit_Usage_Day__c$Usage_Date__c</dateColumn>
+        <interval>INTERVAL_LAST30</interval>
+    </timeFrameFilter>
+</Report>

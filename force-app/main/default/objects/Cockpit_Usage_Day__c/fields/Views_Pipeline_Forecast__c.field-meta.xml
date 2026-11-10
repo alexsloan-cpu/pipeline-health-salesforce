@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Views_Pipeline_Forecast__c</fullName>
+    <label>Views: Pipeline and Forecast</label>
+    <type>Number</type>
+    <precision>7</precision>
+    <scale>0</scale>
+    <defaultValue>0</defaultValue>
+    <description>AE Pipeline and Forecast or BDR Sourced Pipeline tab opens.</description>
+    <required>false</required>
+</CustomField>

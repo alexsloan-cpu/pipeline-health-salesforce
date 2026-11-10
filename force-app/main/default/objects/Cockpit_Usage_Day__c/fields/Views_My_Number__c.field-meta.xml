@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Views_My_Number__c</fullName>
+    <label>Views: My Number</label>
+    <type>Number</type>
+    <precision>7</precision>
+    <scale>0</scale>
+    <defaultValue>0</defaultValue>
+    <description>BDR My Number tab opens.</description>
+    <required>false</required>
+</CustomField>

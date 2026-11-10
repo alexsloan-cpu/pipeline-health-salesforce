@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Did_Something__c</fullName>
+    <label>Took an Action</label>
+    <type>Checkbox</type>
+    <formula>(Actions_Completed__c + Actions_Dismissed__c + Updates_Saved__c + Emails_Drafted__c + Records_Opened__c + Assistant_Questions__c + Lookups__c) &gt; 0</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <description>True when the seller did more than look: acted on, dismissed or saved something.</description>
+</CustomField>
