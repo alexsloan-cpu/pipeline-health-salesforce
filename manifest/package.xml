@@ -6,11 +6,21 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Account.BuiltWith_CEP_Current__c</members>
+        <members>Account.BuiltWith_Last_Change__c</members>
+        <members>Account.BuiltWith_Last_Change_Date__c</members>
+        <members>Account.BuiltWith_Competitor_Added__c</members>
+        <members>Account.BuiltWith_Competitor_Removed__c</members>
+        <members>Account.BuiltWith_Last_Checked__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
         <members>PH_Pipeline_Health_Access</members>
         <members>PH_User</members>
         <members>PH_Admin</members>
         <members>PH_Classic</members>
         <members>PH_Usage_Writer</members>
+        <members>BuiltWith_Signals</members>
         <name>PermissionSet</name>
     </types>
     <types>

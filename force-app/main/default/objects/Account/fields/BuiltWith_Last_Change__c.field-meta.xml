@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BuiltWith_Last_Change__c</fullName>
+    <label>BuiltWith Last Change</label>
+    <description>Most recent add or removal of an engagement tool, as BuiltWith reported it.</description>
+    <type>TextArea</type>
+</CustomField>

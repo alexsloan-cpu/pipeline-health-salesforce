@@ -9,6 +9,9 @@ Technical build sheet (components, dry-run results, open questions, change log):
 - `manifest/package.xml`: every component in scope, by type
 - `force-app/main/default/lwc/`: 28 dm* Lightning web components (synced from prod 2026-11-09)
 - `sfdx-project.json`: project config
+- `force-app/main/default/objects/Account/fields/`: six net-new BuiltWith signal fields on Account, with the `BuiltWith_Signals` permission set (added Nov 9, not deployed)
+- `docs/cockpit-signals.md`: where every AE Cockpit card gets its data (UserGems, BuiltWith, ZoomInfo, Momentum vendor fields, multi-threading, call recording coverage)
+- `mockup/`: demo-only scripts for the artifacts. They change the page, never Salesforce
 
 Not yet in the repo: objects and fields, Apex, flows, FlexiPages, permission sets. Pull them with the retrieve command below.
 
