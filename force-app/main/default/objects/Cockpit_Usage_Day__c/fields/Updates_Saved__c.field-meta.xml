@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Updates_Saved__c</fullName>
+    <label>Deal Updates Saved</label>
+    <type>Number</type>
+    <precision>7</precision>
+    <scale>0</scale>
+    <defaultValue>0</defaultValue>
+    <description>Saves of stage, close date, forecast category, amount, next step or MEDDPICC from the cockpit.</description>
+    <required>false</required>
+</CustomField>

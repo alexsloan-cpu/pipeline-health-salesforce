@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Cockpit_Usage_Day__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>CockpitUsageController</members>
+        <members>CockpitUsageControllerTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>ckUsage</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Cockpit_Usage_Logger</members>
+        <members>Cockpit_Usage_Reporting</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Cockpit_Usage_Days</members>
+        <members>Users_with_Cockpit_Usage</members>
+        <name>ReportType</name>
+    </types>
+    <types>
+        <members>Cockpit_Adoption</members>
+        <members>Cockpit_Adoption/Cockpit_Active_Sellers_This_Week</members>
+        <members>Cockpit_Adoption/Cockpit_Daily_Active_Sellers</members>
+        <members>Cockpit_Adoption/Cockpit_Tab_and_Action_Mix</members>
+        <members>Cockpit_Adoption/Cockpit_Sellers_Not_Seen_7_Days</members>
+        <name>Report</name>
+    </types>
+    <version>62.0</version>
+</Package>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Cockpit Usage Day</label>
+    <pluralLabel>Cockpit Usage Days</pluralLabel>
+    <nameField>
+        <displayFormat>CU-{000000}</displayFormat>
+        <label>Usage Day</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <description>One row per seller per day they open the AE or BDR Cockpit. Written only by CockpitUsageController. Counts page loads, tab views, actions and active minutes so RevOps can verify adoption.</description>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>Private</sharingModel>
+    <externalSharingModel>Private</externalSharingModel>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <visibility>Public</visibility>
+</CustomObject>

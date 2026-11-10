@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sessions__c</fullName>
+    <label>Page Loads</label>
+    <type>Number</type>
+    <precision>7</precision>
+    <scale>0</scale>
+    <defaultValue>0</defaultValue>
+    <description>Times the cockpit page loaded.</description>
+    <required>false</required>
+</CustomField>

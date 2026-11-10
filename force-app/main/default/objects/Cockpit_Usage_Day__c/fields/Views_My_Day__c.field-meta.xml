@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Views_My_Day__c</fullName>
+    <label>Views: My Day</label>
+    <type>Number</type>
+    <precision>7</precision>
+    <scale>0</scale>
+    <defaultValue>0</defaultValue>
+    <description>Times the My Day tab was opened.</description>
+    <required>false</required>
+</CustomField>

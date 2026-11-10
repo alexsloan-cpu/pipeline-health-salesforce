@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager_Name__c</fullName>
+    <label>Manager</label>
+    <type>Text</type>
+    <formula>User__r.Manager.FirstName &amp; " " &amp; User__r.Manager.LastName</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <description>The seller's manager, for team rollups.</description>
+    <required>false</required>
+</CustomField>
