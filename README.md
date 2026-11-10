@@ -71,3 +71,13 @@ Stage B: delete the Pipeline Health tab first (pre-destructive), then everything
 ```
 sf project deploy validate --manifest destructive/package.xml --pre-destructive-changes destructive/preDestructiveChanges.xml --post-destructive-changes destructive/destructiveChanges.xml --target-org iterable-prod --test-level RunRelevantTests
 ```
+
+## Test level note (found 2026-11-09)
+
+A full `RunLocalTests` validate currently fails in production on one unrelated test, `LoopsAccountWebhookTriggerTest.testTrigger` (null pointer, line 70). Until that is fixed, validate with a named passing test so the job can be quick deployed:
+
+```
+sf project deploy validate --manifest <manifest> --target-org iterable-prod --test-level RunSpecifiedTests --tests PeriodConverterTest
+```
+
+`RunRelevantTests` is fine for plain dry runs. A validate that runs no tests cannot be quick deployed.
